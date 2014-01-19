@@ -1,0 +1,10 @@
+emgd DKMS module for Debian
+
+Please see ./README for a description of the r5u870 software.
+
+The Debian emgd source package provides two packages,
+
+ 1) emgd, which the provides the kernel driver
+ 2) emgd-kernel-source, which provides the source for the kernel modules
+
+

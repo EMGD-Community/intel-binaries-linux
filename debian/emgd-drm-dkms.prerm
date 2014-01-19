@@ -1,0 +1,21 @@
+#!/bin/sh
+
+NAME=emgd
+PACKAGE_NAME=$NAME-dkms
+
+set -e
+
+VERSION=`dpkg-query -W -f='${Version}' $PACKAGE_NAME | cut -d"-" -f1`
+case "$1" in
+    remove|upgrade|deconfigure)
+      if [  "`dkms status -m $NAME`" ]; then
+        dkms remove -m $NAME -v $VERSION --all
+      fi
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
+
+

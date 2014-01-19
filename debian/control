@@ -1,0 +1,11 @@
+Source: emgd-dkms
+Section: graphics
+Priority: optional
+Maintainer: Jose Bernardo Bandos <jbbandos@hotmail.com>
+Build-Depends: debhelper (>= 9), dkms, linux-headers-generic [i386 amd64], libtool
+Standards-Version: 3.8.1
+
+Package: emgd-drm-dkms
+Architecture: all
+Depends: dkms (>= 1.95), make, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.

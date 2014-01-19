@@ -1,0 +1,4 @@
+drm/emgd/		/usr/src/emgd-1.16
+drm/include/		/usr/src/emgd-1.16
+drm/pvr/		/usr/src/emgd-1.16
+debian/dkms.conf	/usr/src/emgd-1.16
