@@ -6,3 +6,44 @@
 
 %:
 	dh $@
+
+override_dh_clean:
+	dh_clean
+	
+	# removing all unpacked binaries
+	rm -rfv binaries/*/rpm_contents/
+	rm -rfv video_plugin/rpm_contents/
+
+override_dh_configure:
+	dh_configure
+	
+	# TODO: do it here recursivly..
+	mkdir -p binaries/F14/rpm_contents/
+	mkdir -p binaries/MeeGo1.2/rpm_contents/
+	mkdir -p binaries/MeeGo_Wayland/rpm_contents/
+	mkdir -p binaries/Tizen1.0/rpm_contents/
+	# Unpacking Fedora14 binaries
+	cd binaries/F14/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.18.i586.rpm    | cpio -idmv
+	cd binaries/F14/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.18.i586.rpm  | cpio -idmv
+	cd binaries/F14/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.18.i586.rpm    | cpio -idmv
+	# Unpacking MeeGo1.2 binaries
+	cd binaries/MeeGo1.2/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.18.i586.rpm    | cpio -idmv
+	cd binaries/MeeGo1.2/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.18.i586.rpm  | cpio -idmv
+	cd binaries/MeeGo1.2/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.18.i586.rpm    | cpio -idmv
+	# Unpacking MeeGo_Wayland binaries
+	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.18.i586.rpm    | cpio -idmv
+	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.18.i586.rpm  | cpio -idmv
+	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.18.i586.rpm    | cpio -idmv
+	# Unpacking Tizen1.0 binaries
+	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.18.i586.rpm    | cpio -idmv
+	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.18.i586.rpm  | cpio -idmv
+	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.18.i586.rpm    | cpio -idmv
+	
+	# Unpacking video_plugin
+	mkdir -p video_plugin/rpm_contents/
+	cd video_plugin/rpm_contents/ && rpm2cpio ../gst-plugins-mixvideo-0.10.39-1.i586.rpm | cpio -idmv
+	cd video_plugin/rpm_contents/ && rpm2cpio ../gst-plugins-va-0.10.12-1.i586.rpm       | cpio -idmv
+	cd video_plugin/rpm_contents/ && rpm2cpio ../gst-vabuffer-0.10.8-1.i586.rpm          | cpio -idmv
+	cd video_plugin/rpm_contents/ && rpm2cpio ../mixcommon-0.10.8-1.i586.rpm             | cpio -idmv
+	cd video_plugin/rpm_contents/ && rpm2cpio ../mixvbp-0.10.9-1.i586.rpm                | cpio -idmv
+	cd video_plugin/rpm_contents/ && rpm2cpio ../mixvideo-0.10.10-1.i586.rpm             | cpio -idmv
