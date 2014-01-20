@@ -14,8 +14,8 @@ override_dh_clean:
 	rm -rfv binaries/*/rpm_contents/
 	rm -rfv video_plugin/rpm_contents/
 
-override_dh_configure:
-	dh_configure
+override_dh_auto_configure:
+	dh_auto_configure
 	
 	# TODO: do it here recursivly..
 	mkdir -p binaries/F14/rpm_contents/
