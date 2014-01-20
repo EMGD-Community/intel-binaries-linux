@@ -2,7 +2,9 @@ Source: emgd-driver
 Section: graphics
 Priority: optional
 Maintainer: Thomas-Karl Pietrowski <thopiekar@googlemail.com>
-Build-Depends: debhelper (>= 9), dkms, linux-headers-generic [i386 amd64], libtool
+Build-Depends: debhelper (>= 9),
+ rpm2cpio, cpio,
+ dkms, linux-headers-generic [i386 amd64], libtool
 Standards-Version: 3.8.1
 
 Package: emgd-drm-dkms
