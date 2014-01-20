@@ -1,0 +1,2 @@
+binaries/MeeGo1.2/rpm_contents/usr/include/*	/usr/include/
+binaries/MeeGo1.2/rpm_contents/usr/lib/*.so	/usr/lib/

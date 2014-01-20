@@ -1,7 +1,7 @@
-Source: emgd-dkms
+Source: emgd-driver
 Section: graphics
 Priority: optional
-Maintainer: Jose Bernardo Bandos <jbbandos@hotmail.com>
+Maintainer: Thomas-Karl Pietrowski <thopiekar@googlemail.com>
 Build-Depends: debhelper (>= 9), dkms, linux-headers-generic [i386 amd64], libtool
 Standards-Version: 3.8.1
 
@@ -9,3 +9,102 @@ Package: emgd-drm-dkms
 Architecture: all
 Depends: dkms (>= 1.95), make, ${misc:Depends}
 Description: Intel emgd driver in DKMS format.
+
+Package: emgd-utils
+Architecture: all
+Depends: dkms (>= 1.95), make, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-utils-gui
+Architecture: all
+Depends: 
+ emgd-utils-gui-meego1.2,
+ emgd-utils-gui-meego-wayland,
+ emgd-utils-gui-tizen1.0,
+ emgd-utils-gui-fedora14
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-utils-gui-fedora14
+Architecture: all
+Depends: dkms (>= 1.95), make, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-utils-gui-meego1.2
+Architecture: all
+Depends: dkms (>= 1.95), make, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-utils-gui-meego-wayland
+Architecture: all
+Depends: dkms (>= 1.95), make, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-utils-gui-tizen1.0
+Architecture: all
+Depends: dkms (>= 1.95), make, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-utils-ced-lite
+Architecture: all
+Depends: dkms (>= 1.95), make, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: xserver-xorg-1.9-video-emgd
+Architecture: all
+Depends:
+ xserver-xorg-1.9-video-emgd-meego1.2,
+ xserver-xorg-1.9-video-emgd-meego-wayland,
+ xserver-xorg-1.9-video-emgd-tizen1.0,
+ xserver-xorg-1.9-video-emgd-fedora14
+Description: Intel emgd driver in DKMS format.
+
+Package: xserver-xorg-1.9-video-emgd-fedora14
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: xserver-xorg-1.9-video-emgd-meego1.2
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: xserver-xorg-1.9-video-emgd-meego-wayland
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: xserver-xorg-1.9-video-emgd-tizen1.0
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-headers
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-headers-common
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-headers-fedora14
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-headers-meego1.2
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-headers-meego-wayland
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: emgd-headers-tizen1.0
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
