@@ -2,7 +2,7 @@
 # -*- makefile -*-
 
 # Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+export DH_VERBOSE=1
 
 %:
 	dh $@
@@ -47,3 +47,6 @@ override_dh_auto_configure:
 	cd video_plugin/rpm_contents/ && rpm2cpio ../mixcommon-0.10.8-1.i586.rpm             | cpio -idmv
 	cd video_plugin/rpm_contents/ && rpm2cpio ../mixvbp-0.10.9-1.i586.rpm                | cpio -idmv
 	cd video_plugin/rpm_contents/ && rpm2cpio ../mixvideo-0.10.10-1.i586.rpm             | cpio -idmv
+
+override_dh_shlibdeps:
+	dh_shlibdeps -- -v
