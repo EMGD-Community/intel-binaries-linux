@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NAME=emgd
+NAME=emgd-drm
 PACKAGE_NAME=$NAME-dkms
 
 set -e
