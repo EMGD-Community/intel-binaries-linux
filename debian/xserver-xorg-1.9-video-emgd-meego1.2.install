@@ -1,3 +1,4 @@
+binaries/MeeGo1.2/rpm_contents/usr/lib/*.so	/usr/lib/
 binaries/MeeGo1.2/rpm_contents/usr/lib/*.so.*	/usr/lib/
 binaries/MeeGo1.2/rpm_contents/usr/lib/xorg	/usr/lib/
 binaries/MeeGo1.2/rpm_contents/usr/lib/dri	/usr/lib/
