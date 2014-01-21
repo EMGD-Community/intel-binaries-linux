@@ -36,10 +36,7 @@ Description: Intel emgd driver in DKMS format.
 Package: emgd-utils-gui
 Architecture: all
 Depends: 
- emgd-utils-gui-meego1.2,
- emgd-utils-gui-meego-wayland,
- emgd-utils-gui-tizen1.0,
- emgd-utils-gui-fedora14
+ emgd-utils-gui-meego1.2 | emgd-utils-gui-meego-wayland | emgd-utils-gui-tizen1.0 | emgd-utils-gui-fedora14
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-utils-gui-fedora14
@@ -86,10 +83,7 @@ Description: Intel emgd driver in DKMS format.
 Package: xserver-xorg-1.9-video-emgd
 Architecture: all
 Depends:
- xserver-xorg-1.9-video-emgd-meego1.2,
- xserver-xorg-1.9-video-emgd-meego-wayland,
- xserver-xorg-1.9-video-emgd-tizen1.0,
- xserver-xorg-1.9-video-emgd-fedora14
+ xserver-xorg-1.9-video-emgd-meego1.2 | xserver-xorg-1.9-video-emgd-meego-wayland | xserver-xorg-1.9-video-emgd-tizen1.0 | xserver-xorg-1.9-video-emgd-fedora14
 Description: Intel emgd xserver driver.
 
 Package: xserver-xorg-1.9-video-emgd-fedora14
