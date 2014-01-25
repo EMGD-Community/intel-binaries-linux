@@ -6,8 +6,8 @@
 
 set -e
 
-NAME=emgd-drm
-PACKAGE_NAME=$NAME-dkms
+NAME=emgd
+PACKAGE_NAME=$NAME-drm-dkms
 CVERSION=`dpkg-query -W -f='${Version}' $PACKAGE_NAME | awk -F "-" '{print $1}' | cut -d\: -f2`
 ARCH=`dpkg --print-architecture`
 

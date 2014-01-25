@@ -49,4 +49,4 @@ override_dh_auto_configure:
 	cd video_plugin/rpm_contents/ && rpm2cpio ../mixvideo-0.10.10-1.i586.rpm             | cpio -idmv
 
 override_dh_shlibdeps:
-	dh_shlibdeps --ignore-missing-info -v
+	dh_shlibdeps --ignore-missing-info -- -v
