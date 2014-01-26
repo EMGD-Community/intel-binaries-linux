@@ -17,6 +17,7 @@ Package: emgd-driver
 Architecture: all
 Depends:
  emgd-drm-dkms,
+ emgd-headers,
  emgd-utils,
  xserver-xorg-1.9-video-emgd,
 Description: Intel emgd driver in DKMS format.
@@ -109,6 +110,7 @@ Description: Intel emgd xserver driver for Tizen1.0.
 Package: emgd-headers
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}
+ emgd-headers-meego1.2 | emgd-headers-meego-wayland| emgd-headers-tizen1.0 | emgd-headers-fedora14 | emgd-headers-common,
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-headers-common
@@ -118,7 +120,7 @@ Description: Intel emgd driver in DKMS format.
 
 Package: emgd-headers-fedora14
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends} 
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-headers-meego1.2
