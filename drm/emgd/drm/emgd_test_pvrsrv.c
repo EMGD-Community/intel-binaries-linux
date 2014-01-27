@@ -34,7 +34,7 @@
 #define MODULE_NAME hal.oal
 
 #include "drmP.h"
-#include "drm.h"
+#include "uapi/drm/drm.h"
 
 #include "drm_emgd_private.h"
 #include "emgd_drm.h"

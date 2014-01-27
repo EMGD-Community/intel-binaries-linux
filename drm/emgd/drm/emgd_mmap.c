@@ -101,7 +101,7 @@ int emgd_mmap(struct file *filp, struct vm_area_struct *vma)
 	 */
 	vma->vm_ops = &emgd_vm_ops;
 	vma->vm_private_data = chunk;
-	vma->vm_flags |= VM_RESERVED | VM_IO | VM_MIXEDMAP | VM_DONTEXPAND;
+	vma->vm_flags |= VM_IO | VM_MIXEDMAP | VM_DONTEXPAND | VM_DONTDUMP;
 	pgprot_val(vma->vm_page_prot) =
 		pgprot_val(vma->vm_page_prot) | _PAGE_CACHE_UC_MINUS;
 

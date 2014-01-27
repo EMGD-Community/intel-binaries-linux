@@ -902,19 +902,19 @@ typedef struct _kdrm_unlock_planes {
 #define DRM_IOCTL_IGD_RESERVED_6       DRM_IO(DRM_IGD_RESERVED_6 + BASE)
 
 /* For Video (MXVDX/TOPAZ) */
-#define DRM_IOCTL_IGD_VIDEO_CMD_BUF    DRM_IOR(DRM_IGD_VIDEO_CMD_BUF + BASE,\
+#define DRM_IOCTL_IGD_VIDEO_CMD_BUF    DRM_IOWR(DRM_IGD_VIDEO_CMD_BUF + BASE,\
 		emgd_drm_video_cmd_buf_t)
 #define DRM_IOCTL_IGD_GET_DEVICE_INFO  DRM_IOR(DRM_IGD_GET_DEVICE_INFO + BASE,\
 		emgd_drm_device_info_t)
 #define DRM_IOCTL_IGD_GET_PAGE_LIST    DRM_IOR(DRM_IGD_GET_PAGE_LIST + BASE,\
 		emgd_drm_get_page_list_t)
-#define DRM_IOCTL_IGD_INIT_VIDEO       DRM_IOR(DRM_IGD_INIT_VIDEO + BASE,\
+#define DRM_IOCTL_IGD_INIT_VIDEO       DRM_IOWR(DRM_IGD_INIT_VIDEO + BASE,\
 		emgd_drm_init_video_t)
-#define DRM_IOCTL_IGD_VIDEO_GET_INFO  DRM_IOR(DRM_IGD_VIDEO_GET_INFO + BASE,\
+#define DRM_IOCTL_IGD_VIDEO_GET_INFO  DRM_IOWR(DRM_IGD_VIDEO_GET_INFO + BASE,\
 		emgd_drm_video_get_info_t)
 #define DRM_IOCTL_IGD_VIDEO_FLUSH_TLB  DRM_IOR(DRM_IGD_VIDEO_FLUSH_TLB + BASE,\
 		emgd_drm_video_flush_tlb_t)
-#define DRM_IOCTL_IGD_PREINIT_MMU  DRM_IOR(DRM_IGD_PREINIT_MMU + BASE,\
+#define DRM_IOCTL_IGD_PREINIT_MMU  DRM_IOWR(DRM_IGD_PREINIT_MMU + BASE,\
 		emgd_drm_preinit_mmu_t)
 #define DRM_IOCTL_IGD_UNLOCK_PLANES  DRM_IOR(DRM_IGD_UNLOCK_PLANES + BASE,\
 		emgd_drm_unlock_planes_t)

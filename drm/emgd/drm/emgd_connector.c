@@ -299,7 +299,7 @@ static int emgd_connector_set_property(struct drm_connector *connector,
 
 	/* Set the property value to the new one.  This doesn't actually change
      * anything on the HW. */
-	ret = drm_connector_property_set_value(connector, property, value);
+	ret = drm_object_property_set_value(&connector->base, property, value);
 	if (ret) {
 		return ret;
 	}

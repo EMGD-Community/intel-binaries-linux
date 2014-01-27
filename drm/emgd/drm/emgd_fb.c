@@ -41,7 +41,7 @@
 #include <linux/module.h>
 #endif
 #include <drmP.h>
-#include <drm.h>
+#include <uapi/drm/drm.h>
 #include <drm_crtc.h>
 #include <drm_crtc_helper.h>
 #include <drm_fb_helper.h>
@@ -539,7 +539,7 @@ static void create_connector_properties(struct drm_device *dev,
 				continue;
 		}
 
-		drm_connector_attach_property(drm_connector, new_prop, current_value);
+		drm_object_attach_property(&drm_connector->base, new_prop, current_value);
 		emgd_connector->properties[num_of_properties++] = new_prop;
 	}
 
@@ -646,12 +646,12 @@ static void create_connectors(struct drm_device *dev,
 
 
 #if 0
-        drm_connector_attach_property(&connector->base,
+        drm_object_attach_property(&connector->base,
                         dev->mode_config.scaling_mode_property,
                         DRM_MODE_SCALE_FULLSCREEN);
-        drm_connector_attach_property(&connector->base,
+        drm_object_attach_property(&connector->base,
                        dev->mode_config.edid_property, 0);
-        drm_connector_attach_property(&connector->base,
+        drm_object_attach_property(&connector->base,
                        dev->mode_config.dpms_property, 0);
 #endif
 
