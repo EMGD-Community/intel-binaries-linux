@@ -1,2 +1,2 @@
-drm/emgd/*        /usr/src/emgd-1.16
+drm/*			/usr/src/emgd-1.16
 debian/dkms.conf	/usr/src/emgd-1.16
