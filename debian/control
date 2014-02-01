@@ -16,9 +16,9 @@ Standards-Version: 3.8.1
 Package: emgd-driver
 Architecture: all
 Depends:
- emgd-drm-dkms,
- emgd-headers,
- emgd-utils,
+ emgd-drm-dkms (> ${binary:Version}),
+ emgd-headers  (> ${binary:Version}),
+ emgd-utils    (> ${binary:Version}),
  xserver-xorg-1.9-video-emgd,
 Description: Intel emgd driver in DKMS format.
 
@@ -32,14 +32,14 @@ Description: Intel emgd driver in DKMS format.
 Package: emgd-utils
 Architecture: all
 Depends:
- emgd-utils-gui,
- emgd-utils-ced-lite
+ emgd-utils-gui      (> ${binary:Version}),
+ emgd-utils-ced-lite (= ${binary:Version})
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-utils-gui
 Architecture: all
 Depends: 
- emgd-utils-gui-meego1.2 | emgd-utils-gui-meego-wayland | emgd-utils-gui-tizen1.0 | emgd-utils-gui-fedora14
+ emgd-utils-gui-meego1.2 (= ${binary:Version}) | emgd-utils-gui-meego-wayland (= ${binary:Version}) | emgd-utils-gui-tizen1.0 (= ${binary:Version}) | emgd-utils-gui-fedora14 (= ${binary:Version})
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-utils-gui-fedora14
@@ -86,7 +86,7 @@ Description: Intel emgd driver in DKMS format.
 Package: xserver-xorg-1.9-video-emgd
 Architecture: all
 Depends:
- xserver-xorg-1.9-video-emgd-meego1.2 | xserver-xorg-1.9-video-emgd-meego-wayland | xserver-xorg-1.9-video-emgd-tizen1.0 | xserver-xorg-1.9-video-emgd-fedora14
+ xserver-xorg-1.9-video-emgd-meego1.2 (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-meego-wayland (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-tizen1.0 (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-fedora14 (= ${binary:Version})
 Description: Intel emgd xserver driver.
 
 Package: xserver-xorg-1.9-video-emgd-fedora14
@@ -118,13 +118,13 @@ Architecture: i386
 Depends: ${shlibs:Depends}, ${misc:Depends},
  xserver-xorg-core | xserver-xorg-1.9-core,
 Conflicts:
- xserver-xorg-core (<< 1.9), xserver-xorg-core (>= 1.10)
+ xserver-xorg-core (<< 2:1.9), xserver-xorg-core (>= 2:1.10)
 Description: Intel emgd xserver driver for Tizen1.0.
 
 Package: emgd-headers
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}
- emgd-headers-meego1.2 | emgd-headers-meego-wayland| emgd-headers-tizen1.0 | emgd-headers-fedora14 | emgd-headers-common,
+ emgd-headers-meego1.2 (= ${binary:Version}) | emgd-headers-meego-wayland (= ${binary:Version}) | emgd-headers-tizen1.0 (= ${binary:Version}) | emgd-headers-fedora14 (= ${binary:Version}) | emgd-headers-common (= ${binary:Version}),
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-headers-common
