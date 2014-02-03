@@ -117,8 +117,7 @@ Package: xserver-xorg-1.9-video-emgd-tizen1.0
 Architecture: i386
 Depends: ${shlibs:Depends}, ${misc:Depends},
  xserver-xorg-core | xserver-xorg-1.9-core,
-Conflicts:
- xserver-xorg-core (<< 2:1.9), xserver-xorg-core (>= 2:1.10)
+ xorg-video-abi-8
 Description: Intel emgd xserver driver for Tizen1.0.
 
 Package: emgd-headers
