@@ -1,0 +1,6 @@
+binaries/MeeGo_Wayland/rpm_contents/usr/lib/*.so	/usr/lib/
+binaries/MeeGo_Wayland/rpm_contents/usr/lib/*.so.*	/usr/lib/
+binaries/MeeGo_Wayland/rpm_contents/usr/lib/xorg	/usr/lib/
+binaries/MeeGo_Wayland/rpm_contents/usr/lib/dri	/usr/lib/
+binaries/MeeGo_Wayland/rpm_contents/usr/share/doc	/usr/share/
+binaries/MeeGo_Wayland/rpm_contents/usr/share/man	/usr/share/
