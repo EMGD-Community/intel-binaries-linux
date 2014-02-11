@@ -43,7 +43,7 @@ override_dh_auto_configure:
 	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.16.i586.rpm    | cpio -idmv
 	
 	## Copying missing lib from Tizen to MeeGo_Wayland..
-	cp binaries/Tizen1.0/rpm_contents/usr/lib/libwayland-emgd.so.1.1.5.15.3226 binaries/MeeGo_Wayland/rpm_contents/usr/lib/
+	cp binaries/Tizen1.0/rpm_contents/usr/lib/libwayland-emgd.so.1.5.15.3226 binaries/MeeGo_Wayland/rpm_contents/usr/lib/
 	
 	## Adding missing symlinks
 	# MeeGo_Wayland
