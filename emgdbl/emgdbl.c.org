@@ -1,0 +1,200 @@
+/*
+  * *  Modified EMGD Backlight extra driver module for EMGD v.1.5.2
+  * *
+  * *  Maintainer : Tista < https://launchpad.net/~tista  >
+  * *
+  * *  Copyright (c) 2011 Tista
+  * *
+  * *  Based onprogear_bl.c driver by Marcin Juszkiewicz
+  * *  <linux at hrw dot one dot pl>
+  * *
+  * *  Based on Progear LCD driver by M Schacht
+  * *  <mschacht at alumni dot washington dot edu>
+  * *
+  * *  Based on Sharp's Corgi Backlight Driver
+  * *  Based on Backlight Driver for HP Jornada 680
+  * *
+  * *  This program is free software; you can redistribute it and/or modify
+  * *  it under the terms of the GNU General Public License version 2 as
+  * *  published by the Free Software Foundation.
+  * *
+  * * --------------------------------------------------------------------
+  * * 
+  * */
+  
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <generated/autoconf.h>
+#include <linux/init.h>
+#include <linux/platform_device.h>
+#include <linux/mutex.h>
+#include <linux/fb.h>
+#include <linux/backlight.h>
+#include <linux/pci.h>
+/*
+ * ACPI includes.
+ */
+//#include <linux/acpi.h>
+//#include <acpi/video.h>
+
+  
+static struct pci_dev *gfx_dev = NULL;
+static u32 *bl_baseptr = NULL;
+
+static int emgdbl_set_intensity(struct backlight_device *bd)
+    
+{
+   
+       int intensity = bd->props.brightness;
+   
+       if (bd->props.power != FB_BLANK_UNBLANK)
+           intensity = 0;
+       if (bd->props.fb_blank != FB_BLANK_UNBLANK)
+           intensity = 0;
+   
+       *bl_baseptr = (intensity << 1) | 0x400000;
+   
+       return 0;
+   
+}
+
+
+static int emgdbl_get_intensity(struct backlight_device *bd)
+    
+{
+   
+       int intensity;
+   
+       intensity = (*bl_baseptr >> 1) & 0x2f;
+   
+       return intensity;
+  
+}
+
+
+static struct backlight_ops emgdbl_ops = 
+{
+   
+       .get_brightness = emgdbl_get_intensity,
+       .update_status = emgdbl_set_intensity,
+   
+};
+
+static int emgdbl_probe(struct platform_device *pdev)
+    
+{
+   
+       u32 temp;
+       struct backlight_device *emgdbl_backlight_device;
+       struct backlight_properties props;
+   
+       gfx_dev = pci_get_device(PCI_VENDOR_ID_INTEL, 0x8108, NULL);
+       if (!gfx_dev) 
+     {
+        
+               printk("Intel SCH Poulsbo graphics controller not found.\n");
+               return -ENODEV;
+           
+     }
+   
+   
+       pci_read_config_dword(gfx_dev, 16, &temp);
+       bl_baseptr = ioremap(temp + 0x61254, 4);
+       memset(&props, 0, sizeof(struct backlight_properties));
+            props.max_brightness = 32;
+            props.power = FB_BLANK_UNBLANK;
+            props.brightness = 32;
+   
+       emgdbl_backlight_device = backlight_device_register("emgdbl",
+                                                           &pdev->dev, NULL,
+                                                           &emgdbl_ops, &props);
+       if (IS_ERR(emgdbl_backlight_device)) 
+     {
+        
+               iounmap(bl_baseptr);
+               pci_dev_put(gfx_dev);
+               return PTR_ERR(emgdbl_backlight_device);
+           
+     }
+   
+       platform_set_drvdata(pdev, emgdbl_backlight_device);
+   
+       emgdbl_set_intensity(emgdbl_backlight_device);
+
+//       return acpi_video_register();
+
+       return 0;
+   
+}
+
+
+static int emgdbl_remove(struct platform_device *pdev)
+    
+{
+   
+       struct backlight_device *bd = platform_get_drvdata(pdev);
+       backlight_device_unregister(bd);
+   
+       iounmap(bl_baseptr);
+       pci_dev_put(gfx_dev);
+//       acpi_video_unregister();
+       return 0;
+   
+}
+
+static struct platform_driver emgdbl_driver = 
+{
+   
+       .probe = emgdbl_probe,
+       .remove = emgdbl_remove,
+       .driver = 
+ {
+    
+              .name = "emgdbl",
+              
+ },
+   
+};
+
+static struct platform_device *emgdbl_device;
+
+static int __init emgdbl_init(void)
+    
+{
+   
+       int ret = platform_driver_register(&emgdbl_driver);
+   
+       if (ret)
+               return ret;
+       emgdbl_device = platform_device_register_simple("emgdbl", -1,
+               NULL, 0);
+       if (IS_ERR(emgdbl_device)) 
+     {
+        
+               platform_driver_unregister(&emgdbl_driver);
+               return PTR_ERR(emgdbl_device);
+           
+     }
+   
+   
+       return 0;
+   
+}
+
+
+static void __exit emgdbl_exit(void)
+    
+{
+   
+       platform_device_unregister(emgdbl_device);
+       platform_driver_unregister(&emgdbl_driver);
+   
+}
+
+
+module_init(emgdbl_init);
+module_exit(emgdbl_exit);
+
+MODULE_AUTHOR("Tista <https://launchpad.net/~tista>");
+MODULE_DESCRIPTION("EMGD-bl Backlight Driver");
+MODULE_LICENSE("GPL");

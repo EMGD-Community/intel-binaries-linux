@@ -1,0 +1,53 @@
+#
+# Backlight & LCD drivers configuration
+#
+
+menuconfig BACKLIGHT_LCD_SUPPORT
+	bool "Backlight & LCD device support"
+	help
+	  Enable this to be able to choose the drivers for controlling the
+	  backlight and the LCD panel on some platforms, for example on PDAs.
+
+if BACKLIGHT_LCD_SUPPORT
+
+#
+# LCD
+#
+config LCD_CLASS_DEVICE
+        tristate "Lowlevel LCD controls"
+	default m
+	help
+	  This framework adds support for low-level control of LCD.
+	  Some framebuffer devices connect to platform-specific LCD modules
+	  in order to have a platform-specific way to control the flat panel
+	  (contrast and applying power to the LCD (not to the backlight!)).
+
+	  To have support for your specific LCD panel you will have to
+	  select the proper drivers which depend on this option.
+
+#
+# Backlight
+#
+config BACKLIGHT_CLASS_DEVICE
+        tristate "Lowlevel Backlight controls"
+	default m
+	help
+	  This framework adds support for low-level control of the LCD
+          backlight. This includes support for brightness and power.
+
+	  To have support for your specific LCD panel you will have to
+	  select the proper drivers which depend on this option.
+
+if BACKLIGHT_CLASS_DEVICE
+
+config BACKLIGHT_EMGDBL
++tristate "EMGD Backlight Driver"
++depends on BACKLIGHT_CLASS_DEVICE && PCI && X86
++default n
++help
++  If you have an OpenFrame device say Y to enable the
++  backlight driver.
+
+endif # BACKLIGHT_CLASS_DEVICE
+
+endif # BACKLIGHT_LCD_SUPPORT
