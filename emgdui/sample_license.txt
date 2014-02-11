@@ -1,0 +1,309 @@
+INTEL SAMPLE/REFERENCE SOFTWARE LICENSE AGREEMENT
+
+IMPORTANT - READ BEFORE COPYING, INSTALLING OR USING.
+
+Do not use or load this software and any associated materials (collectively,
+the "Sample Software") until you have carefully read the following terms and 
+conditions.  By loading or using the Sample Software, you agree to the terms 
+of this Agreement.  If you do not wish to so agree, do not install or use the 
+Sample Software.	
+		 
+
+1 DEFINITIONS
+
+1.1 "Source Code" means the source code for the Licensed Software identified 
+    below, as provided to Licensee, and as modified by Licensee for use with 
+    Licensee Product.
+1.2 "Object Code" means the executable or binary version of the Licensed 
+    Software identified below, as provided to Licensee, and as modified by 
+    Licensee for use with Licensee Product.
+1.3 "Intel Product" means the product described in Exhibit A which is 
+    purchased by Licensee from Intel for incorporation into Licensee Product.  
+1.4 "Licensed Software" means the software program(s) in Source Code (if 
+    applicable in Exhibit A), executable, or Object Code as set forth in 
+    Exhibit A.
+1.5 "Licensed Documentation" means the end user documentation as set forth 
+     in Exhibit A.
+1.6 "Licensed Items" means the Licensed Software and the Licensed 
+    Documentation, collectively.
+1.7 "Licensee Product" means only products manufactured and distributed by 
+    Licensee which incorporate Intel Products as set forth in Exhibit A.
+
+
+2 LICENSE GRANT AND RESTRICTIONS
+
+2.1 Intel license grants are set forth in Exhibit A.  Distribution rights for 
+the Licensed Items granted in Exhibit A, if any, are conditioned upon Licensee's 
+distribution and license to its end-user customers pursuant to a written license 
+agreement.  Such license agreement may be a "break-the-seal" license agreement.  
+At a minimum such license shall safeguard Intel's ownership rights to the 
+Licensed Items
+
+2.2 No rights or licenses are granted by Intel to Licensee, expressly or by 
+implication, with respect to any proprietary information or patent, copyright, 
+mask work, trademark, trade secret, or other intellectual property right owned 
+or controlled by Intel, except as expressly provided in this Agreement.
+
+
+3 PROPRIETARY RIGHTS
+
+3.1 The Licensed Items and all copies are and shall remain the property of 
+Intel. If the applicable License Grant in Exhibit A provides for the creation 
+of modifications or derivative works, they shall be the property of Licensee 
+subject to any rights Intel may have in the Licensed Items.  Licensee 
+understands and agrees that it does not have the right to distribute the 
+Licensed Items as a stand-alone product, nor to grant a license to any other 
+parties to distribute the Licensed Items as a stand-alone product under this 
+Agreement.  Intel retains the right to use, copy, modify, sublicense, and 
+distribute the Licensed Items.
+
+
+4 LIMITED WARRANTY
+
+INTEL MAKES NO WARRANTY OF ANY KIND WITH REGARD TO LICENSED ITEMS. THE LICENSED 
+ITEMS IS LICENSED "AS IS", AND INTEL IS NOT OBLIGATED TO PROVIDE ANY SUPPORT OR 
+ASSISTANCE UNDER THIS AGREEMENT. NO INSTALLATION, TRAINING OR OTHER SERVICES 
+WILL BE PROVIDED BY INTEL UNDER THIS AGREEMENT. INTEL IS NOT OBLIGATED TO 
+PROVIDE ANY UPDATES, ENHANCEMENTS OR EXTENSIONS, ALTHOUGH INTEL MAY, AT ITS 
+DISCRETION, PROVIDE UPDATES CREATED IN THE NORMAL COURSE OF BUSINESS.
+
+ANY IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+AND ALL OTHER WARRANTIES, EXPRESS OR IMPLIED ARE EXCLUDED, AND WILL NOT APPLY 
+TO THE LICENSED ITEMS IN ANY FORM. 
+
+Specifically, Intel will not have any liability to Licensee, or any third 
+party for:
+
+a)	any defects in the Licensed Items furnished hereunder; or
+b)	inability of Licensee to develop or modify the Licensed Items to conform 
+      to any given performance level or specification; or
+c)	any claim of Licensee or any third party with respect to Licensed Items 
+      arising out of the use or distribution of Licensed Items.
+
+INTEL DOES NOT MAKE ANY WARRANTIES OF ANY KIND THAT THE LICENSED ITEMS DOES 
+NOT OR WILL NOT INFRINGE ANY COPYRIGHT, MASK WORK, PATENT, TRADE SECRET, 
+TRADEMARK, OR OTHER INTELLECTUAL PROPERTY RIGHT OF ANY THIRD PARTY IN 
+ANY COUNTRY. 
+
+
+5 LIMITATION OF LIABILITY
+
+NEITHER INTEL NOR ITS VENDORS SHALL BE LIABLE FOR ANY INDIRECT, SPECIAL, 
+INCIDENTAL, SPECULATIVE, OR CONSEQUENTIAL DAMAGES OF ANY KIND, INCLUDING BUT 
+NOT LIMITED TO LOSS OF PROFITS, LOSS OF USE, LOSS OF GOODWILL, OR INTERRUPTION 
+OF BUSINESS, WHETHER UNDER THIS AGREEMENT OR OTHERWISE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGES.
+
+
+6 INDEMNIFICATION
+
+Licensee shall indemnify Intel and hold Intel harmless from and against any 
+and all actions, claims, defenses, damages, expenses (including attorneys' 
+fees) and liabilities arising from Licensee's use, modification, sublicensing 
+or other disposition of the Licensed Items, including suits or claims brought 
+against Intel by any third parties for Licensee's breach of any Licensee 
+warranty to the third party or for Licensee's negligence to the third party. 
+Licensee's duties under this Section 6 extend to any matters arising out of 
+the alleged infringement by the Licensed Items as modified by Licensee, of any 
+copyright, mask work, patent, trade secret, trademark, or other intellectual 
+property right.
+
+
+7 CONFIDENTIALITY
+
+7.1 General.  Confidential information disclosed under this Agreement, 
+including the existence and content of this Agreement, shall be considered 
+"Confidential Information."  Use and disclosure of such Confidential 
+Information shall be governed by the terms of Section ?7.2 of this Agreement.
+
+7.2 Confidentiality of Terms.  The receiving Party will maintain the 
+confidentiality of the Confidential Information of the disclosing Party with 
+at least the same degree of care that it uses to protect its own confidential 
+and proprietary information, but no less than a reasonable degree of care 
+under the circumstances.  The disclosing Party will not assert any claims for 
+breach of this Section 7.2 or misappropriation of trade secrets against the 
+receiving Party arising from the receiving Party's disclosure of the 
+disclosing Party's Confidential Information made more than five (5) years from 
+the date of the disclosure, regardless of the termination of this Agreement.  
+However, unless at least one of the exceptions set forth in the immediately 
+proceeding sentence has occurred, the receiving Party will continue to treat 
+such Confidential Information as the confidential information of the 
+disclosing Party and only disclose any such Confidential Information to third 
+parties under the terms of a non-disclosure agreement. The parties hereto 
+shall keep the terms of this Agreement confidential and shall not now or 
+hereafter divulge these terms to any third party except: 
+  (a) with the prior written consent of the other party; 
+  (b) as otherwise may be required by law or legal process, including to 
+      legal and financial advisors in their capacity of advising a party 
+      in such matters; 
+  (c) during the course of litigation,  so long as the disclosure of such 
+      terms and conditions are restricted in the same manner as is the 
+      confidential information of other litigating parties; or 
+  (d) in confidence to its legal counsel, accountants, banks and financing 
+      sources and their advisors solely in connection with complying with 
+      financial transactions; provided that, in (b) through (d) above, 
+      (i) the disclosing party shall use all legitimate and legal means 
+      available to minimize the disclosure to third parties, including without 
+      limitation seeking a confidential treatment request or protective order 
+      whenever appropriate or available; and (ii) the disclosing party shall 
+      provide the other party with at least 10 days prior written notice of 
+      such disclosure.
+
+
+8 TERM AND TERMINATION
+
+8.1 The term of this Agreement shall commence upon acceptance by click to 
+agree, and/or use of the code , and shall continue until Licensee ceases to 
+utilize the Licensed Items or this Agreement is terminated pursuant to 
+Sections?8.2 or?8.3. 
+
+8.2 Licensee may terminate this Agreement and the licenses granted herein at 
+any time upon written notice to Intel. 
+
+
+8.3 Intel reserves the right to have audits conducted to verify compliance 
+with this Agreement. In the event that Intel, in its sole discretion, 
+determines that the Licensed Items is not being used by Licensee exclusively 
+for the purposes set forth above, or if Licensee is in breach of any of the 
+terms and conditions of this Agreement, Intel has the right to immediately 
+terminate this License Agreement. In such event, Licensee agrees to 
+immediately return the Source Code to Intel, and to discontinue use and 
+distribution of Object Code.
+
+8.4 Upon termination of this Agreement for any reason, the sections of this 
+Agreement entitled Indemnification, Limitation of Liability, and 
+Confidentiality shall remain in effect.
+
+
+9 U.S. GOVERNMENT RESTRICTED RIGHTS
+
+All copies of the Object Code distributed directly or indirectly to the U.S. 
+government are governed by and must be marked with the following legend: 
+
+"The enclosed software products and documentation were developed at private 
+expense, and are provided with "RESTRICTED RIGHTS."  Use, duplication or 
+disclosure by the government is subject to restrictions as set forth in 
+FAR 52.227-14 and DFARS 252.227-7013 et. seq. or its successor. The use of 
+this product by the government constitutes acknowledgment of Intel's 
+proprietary rights in the product."
+
+
+10 NOTICES
+
+Notices shall be addressed to the following specific individuals or specific 
+departments of the parties to this Agreement at the address shown below:
+
+Intel Corporation
+2625 Walsh Avenue
+Santa Clara, CA  95051-0988
+Attn.:  General Counsel
+
+
+11 EXPORT CONTROL
+
+In the event Licensed Items is exported from the United States or 
+exported/re-exported from a foreign destination by Licensee, Licensee shall 
+insure that the distribution and export/re-export of product is in compliance 
+with all laws, regulations, orders, or other restrictions of the U.S. Export 
+Administration Regulations.  Licensee agrees that neither it nor any of its 
+subsidiaries will export/re-export any technical data, process, product, or 
+service, directly or indirectly to any country for which the United States 
+government or any agencies thereof requires an export license or other 
+government approval without first obtaining such license or approval.
+
+
+12 RELATIONSHIP OF THE PARTIES
+
+Neither party hereto will be deemed the agent or legal representative of the 
+other for any purpose whatsoever and each party will act as an independent 
+contractor with regard to the other in its performance under this Agreement.  
+Nothing herein will authorize either party to create any obligation or 
+responsibility whatsoever, express or implied, on behalf of the other or to 
+bind the other in any manner, or to make any representation, commitment or 
+warranty on behalf of the other.
+
+
+13 PUBLIC RELEASE OF INFORMATION
+
+Licensee will not release to the public or the media any notice or news 
+release concerning this license agreement or the manufacture of products 
+under this license agreement, without first submitting the prospective notice 
+or release to Intel and obtaining its prior written approval, which will not 
+be unreasonably withheld.
+
+
+14 GENERAL
+
+14.1 Any claim arising under or relating to this Agreement shall be governed 
+by the internal substantive laws of the State of Delaware or federal courts 
+located in Delaware, without regard to principles of conflict of laws.  
+
+14.2 Each party hereby agrees to jurisdiction and venue in the courts of 
+the State of California for all disputes and litigation arising under or 
+relating to this Agreement. 
+
+14.3 The rights and remedies provided in this Agreement are in addition to 
+any other rights and remedies provided at law or in equity.
+
+14.4 This Agreement, including its attachments, constitutes the entire 
+agreement between the parties and supersedes all prior and contemporaneous 
+negotiations and agreements regarding the subject matter in this Agreement.  
+No amendment to or modification of this Agreement will be valid and binding 
+unless duly executed by the parties.
+
+
+ 
+EXHIBIT A
+
+A.    DESCRIPTIONS:
+
+"Licensed Software":
+Intel sample/reference code for use with the Intel Embedded Graphics Drivers 
+(EMGD).
+
+"Licensed  Documentation"
+N/A
+
+"Intel Products"
+Intel Embedded IA32 Chipsets, and associated Intel CPUs.
+
+
+B.   LICENSE GRANTS:
+
+	B.1 SOURCE AND OBJECT CODE WITH DERIVATIVES AND OBJECT CODE 
+          DISTRIBUTION RIGHTS
+
+
+	Intel grants to Licensee a non-exclusive, royalty-free license under 
+      Intel copyrights to modify the Source Code, solely for enabling the 
+      Licensed Software to operate with Licensee Product containing an "Intel 
+      Product".  Licensee may create modifications to and merge portions of 
+      the Source Code into Licensee's Product to create derivative works to 
+      the Source Code and Object Code to operate only with an "Intel 
+      Product".  Notwithstanding Section ?7 of this Agreement, Intel grants 
+      to Licensee a non-exclusive, royalty-free license under Intel copyrights
+      to distribute only the derivative works to the Source Code and the 
+      derivative works to the Object Code and the Object Code to Licensee's 
+      customers only for use with Licensee Product, and not as a stand-alone 
+      product.  Derivative works to the Source Code and Object Code, are 
+      subject to the provisions of Section ?2.1, ?2.2, ?3.1 of this Agreement.
+      Licensee shall not reverse engineer, decompile, or disassemble any 
+      object code in the Licensed Software.
+
+
+       B.2 	LICENSED DOCUMENTATION WITH DISTRIBUTION RIGHTS
+
+
+	Intel grants to Licensee a non-exclusive, non-transferable, royalty-free
+      license under Intel copyrights to reproduce or have reproduced (solely 
+      for the purpose of providing product to Licensee) and distribute the 
+      Licensed Documentation to Licensee's customers only for use with 
+      Licensee Product, and not as a stand-alone product.
+
+
+Intel Corp                                                                  
+Rev. 04/05/07  EMGD	
+
+         
+
+

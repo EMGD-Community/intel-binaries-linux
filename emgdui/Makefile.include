@@ -1,0 +1,81 @@
+#----------------------------------------------------------------------------
+# Filename: Makefile.include.external
+# $Revision: 1.1 $
+#----------------------------------------------------------------------------
+# INTEL CONFIDENTIAL
+# Copyright (2002-2008) Intel Corporation All Rights Reserved.
+# The source code contained or described herein and all documents related to
+# the source code ("Material") are owned by Intel Corporation or its suppliers
+# or licensors. Title to the Material remains with Intel Corporation or its
+# suppliers and licensors. The Material contains trade secrets and proprietary
+# and confidential information of Intel or its suppliers and licensors. The
+# Material is protected by worldwide copyright and trade secret laws and
+# treaty provisions. No part of the Material may be used, copied, reproduced,
+# modified, published, uploaded, posted, transmitted, distributed, or
+# disclosed in any way without Intel's prior express written permission.
+# 
+# No license under any patent, copyright, trade secret or other intellectual
+# property right is granted to or conferred upon you by disclosure or
+# delivery of the Materials, either expressly, by implication, inducement,
+# estoppel or otherwise. Any license under such intellectual property rights
+# must be express and approved by Intel in writing.
+# 
+#----------------------------------------------------------------------------
+MAKE += --no-print-directory -f Makefile
+
+export BUILD_INCLUDES ?= -I$(EMGD_PATH)/cfg/external_src
+export LIB_NAME ?= libemgdui
+
+export AR=ar
+export CC=g++
+export DBG_FLAGS=-g -Wall
+export CFLAGS=-c
+export INCLUDES=-I. -I$(EMGD_PATH) $(BUILD_INCLUDES) -I/usr/include/xorg/ -I$(EGD_ROOT)/ial/include \
+				-I$(EGD_ROOT)/ial/xfree86/include -I$(EMGD_PATH)/oal/include \
+				-I$(EMGD_PATH)/hal/include
+export LIBS=-lpthread -lXext -lX11 -lXrandr 
+#-lpci
+export LIB_INCLUDES=-L. -L/usr/X11R6/lib
+export OBJECTS=hal/src/cmn/hal_interface.o \
+				oal/linux/dbgprint.o oal/linux/oslinux.o 
+
+export EXT_STATIC_LIBS = libXegd_escape.a
+
+RED = \033[31m
+GREEN = \033[32m
+OFF = \033[0m
+
+SSERR ?= 1
+
+#
+# Rules that are used for ALL OSs and further modified by each OS
+# Note the double Colon to define such rules
+#
+all:: $(objects)
+	@for x in $(DIRS); do \
+		if ! $(MAKE) -C $$x; \
+			then exit $(SSERR); \
+		fi; \
+	done;
+
+
+ifeq ($(origin LIB), file)
+%.o: %.cpp
+	@echo -e "$(GREEN)$<$(OFF)"
+	@$(CC) $(DBG_FLAGS) $(CFLAGS) $(INCLUDES) -o$@ $<
+	@$(AR) r $(EMGD_PATH)/$(LIB).a $@
+else
+%.o: %.cpp
+	@echo -e "$(GREEN)$<$(OFF)"
+	@$(CC) $(DBG_FLAGS) $(CFLAGS) $(INCLUDES) -o$@ $<
+endif
+
+
+clean::
+	@for x in $(DIRS); do \
+		echo -e "$(RED)Cleaning $$x$(OFF)"; \
+		if ! $(MAKE) -C $$x clean; \
+			then exit $(SSERR); \
+		fi; \
+	done;
+	@rm -Rf *.o core *~ *#
