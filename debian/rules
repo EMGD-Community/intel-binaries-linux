@@ -42,8 +42,16 @@ override_dh_auto_configure:
 	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.16.i586.rpm  | cpio -idmv
 	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.16.i586.rpm    | cpio -idmv
 	
+	## Moving files to right place
+	# emgd_drv_video.so at the wrong place in all packages..
+	cd binaries/F14/rpm_contents/           && mv usr/lib/dri/emgd_drv_video.so usr/lib/xorg/modules/drivers
+	cd binaries/MeeGo1.2/rpm_contents/      && mv usr/lib/dri/emgd_drv_video.so usr/lib/xorg/modules/drivers
+	cd binaries/MeeGo_Wayland/rpm_contents/ && mv usr/lib/dri/emgd_drv_video.so usr/lib/xorg/modules/drivers
+	cd binaries/Tizen1.0/rpm_contents/      && mv usr/lib/dri/emgd_drv_video.so usr/lib/xorg/modules/drivers/
+	
 	## Copying missing lib from Tizen to MeeGo_Wayland..
 	cp binaries/Tizen1.0/rpm_contents/usr/lib/libwayland-emgd.so.1.1.5.15.3226 binaries/MeeGo_Wayland/rpm_contents/usr/lib/
+	
 	## Adding missing symlinks
 	# MeeGo_Wayland
 	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libemgdsrv_um.so.1.5.15.3226     libemgdsrv_um.so
