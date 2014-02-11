@@ -9,8 +9,12 @@ Build-Depends: debhelper (>= 9),
  libxrandr2, libglade2-0, libxext6, libx11-6, libgtk2.0-0, libgdk-pixbuf2.0-0,
 # dri driver
  libva1, libxv1, libxcb-dri2-0,
+# mesa
+ libegl1-mesa-7.9-drivers | libegl1-mesa-drivers,
 # xorg module
  libxdmcp6, libxau6,
+# wayland
+ libwayland-client0, libgbm1,
 Standards-Version: 3.8.1
 
 Package: emgd-driver
@@ -176,3 +180,37 @@ Breaks:
  emgd-headers-common,
 Description: Intel emgd driver in DKMS format.
 
+Package: flashplugin-emgd
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: libmix-common
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: libmix-vbp
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: libmix-video
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: gstreamer0.10-mix
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: gstreamer0.10-va
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
+
+Package: libgstreamer0.10-vabuffer
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Intel emgd driver in DKMS format.
