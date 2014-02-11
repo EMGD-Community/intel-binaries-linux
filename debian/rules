@@ -34,6 +34,8 @@ override_dh_auto_configure:
 	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.18.i586.rpm    | cpio -idmv
 	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.18.i586.rpm  | cpio -idmv
 	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.18.i586.rpm    | cpio -idmv
+	# Missing symlink
+	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libemgdsrv_um.so.1.5.15.3226 libemgdsrv_um.so
 	# Unpacking Tizen1.0 binaries - 1.16?! Seems like Intel took the wrong version/name for the files
 	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.16.i586.rpm    | cpio -idmv
 	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.16.i586.rpm  | cpio -idmv
