@@ -51,7 +51,7 @@ override_dh_auto_configure:
 	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libEMGDegl.so.1.5.15.3226        libEMGDegl.so
 	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libEMGD2d.so.1.5.15.3226         libEMGD2d.so
 	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-egl.so.1.1.5.15.3226  libwayland-egl.so.1
-	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-egl.so.1.1.5.15.3226  libwayland-egl.so
+	#cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-egl.so.1.1.5.15.3226  libwayland-egl.so
 	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-emgd.so.1.1.5.15.3226 libwayland-emgd.so.1
 	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-emgd.so.1.1.5.15.3226 libwayland-emgd.so
 	
