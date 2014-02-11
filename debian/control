@@ -180,10 +180,10 @@ Breaks:
  emgd-headers-common,
 Description: Intel emgd driver in DKMS format.
 
-Package: flashplugin-emgd
-Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Intel emgd driver in DKMS format.
+#Package: flashplugin-emgd
+#Architecture: all
+#Depends: ${shlibs:Depends}, ${misc:Depends}
+#Description: Intel emgd driver in DKMS format.
 
 Package: libmix-common
 Architecture: all
