@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 9),
 # emgdgui - shlibs
  libxrandr2, libglade2-0, libxext6, libx11-6, libgtk2.0-0, libgdk-pixbuf2.0-0,
 # dri driver
- libva1, libxv1, libxcb-dri2-0,
+ libxv1, libxcb-dri2-0,
 # mesa
  libegl1-mesa-7.9-drivers | libegl1-mesa-drivers,
 # xorg module
@@ -16,7 +16,7 @@ Build-Depends: debhelper (>= 9),
 # wayland
  libwayland-client0, libgbm1,
 # video accel
- libva-tpi1,
+ libva-dev,
 Standards-Version: 3.8.1
 
 Package: emgd-driver
