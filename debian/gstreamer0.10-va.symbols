@@ -1,0 +1,8 @@
+libgstvaplugin.so gstreamer0.10-va #MINVER#
+ gst_new_video_overlay_buffer@Base 1.16
+ gst_plugin_desc@Base 1.16
+ gst_surface_convert_get_type@Base 1.16
+ gst_text_overlay_get_type@Base 1.16
+ gst_v4l2_buffer_get_type_1@Base 1.16
+ gst_vaimagesink_get_type@Base 1.16
+ gst_video_overlay_buffer_get_type@Base 1.16

@@ -1,0 +1,5 @@
+libgstvabuffer.so.0 libgstreamer0.10-vabuffer #MINVER#
+ gst_new_va_overlay_buffer@Base 1.16
+ gst_va_buffer_get_type@Base 1.16
+ gst_va_buffer_new@Base 1.16
+ gst_va_overlay_buffer_get_type@Base 1.16
