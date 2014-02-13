@@ -46,8 +46,8 @@ link:
 	cd rpm_contents/usr/lib/ && ln -s libOpenVGU.so.1.5.15.3226            libOpenVGU.so.1
 	#cd rpm_contents/usr/lib/ && ln -s libwayland-egl.so.1.5.15.3226        libwayland-egl.so
 	cd rpm_contents/usr/lib/ && ln -s libwayland-egl.so.1.5.15.3226        libwayland-egl.so.1
-	#cd rpm_contents/usr/lib/ && ln -s libwayland-emgd.so.1.5.15.3226 libwayland-emgd.so
-	#cd rpm_contents/usr/lib/ && ln -s libwayland-emgd.so.1.5.15.3226 libwayland-emgd.so.1
+	cd rpm_contents/usr/lib/ && ln -s libwayland-emgd.so.1.5.15.3226       libwayland-emgd.so
+	cd rpm_contents/usr/lib/ && ln -s libwayland-emgd.so.1.5.15.3226       libwayland-emgd.so.1
 	
 clean:
 	rm -rfv rpm_contents/

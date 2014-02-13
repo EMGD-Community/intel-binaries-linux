@@ -9,52 +9,12 @@ export DH_VERBOSE=1
 
 override_dh_clean:
 	dh_clean
+	make -C binaries clean
 	
 	# removing all unpacked binaries
-	rm -rfv binaries/*/rpm_contents/
 	rm -rfv video_plugin/rpm_contents/
 
 override_dh_auto_configure:
-	dh_auto_configure
-	
-	## TODO: do it here recursivly..
-	mkdir -p binaries/F14/rpm_contents/
-	mkdir -p binaries/MeeGo1.2/rpm_contents/
-	mkdir -p binaries/MeeGo_Wayland/rpm_contents/
-	mkdir -p binaries/Tizen1.0/rpm_contents/
-	# Unpacking Fedora14 binaries
-	cd binaries/F14/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.18.i586.rpm    | cpio -idmv
-	cd binaries/F14/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.18.i586.rpm  | cpio -idmv
-	cd binaries/F14/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.18.i586.rpm    | cpio -idmv
-	
-	# Unpacking MeeGo1.2 binaries
-	cd binaries/MeeGo1.2/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.18.i586.rpm    | cpio -idmv
-	cd binaries/MeeGo1.2/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.18.i586.rpm  | cpio -idmv
-	cd binaries/MeeGo1.2/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.18.i586.rpm    | cpio -idmv
-	
-	# Unpacking MeeGo_Wayland binaries
-	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.18.i586.rpm    | cpio -idmv
-	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.18.i586.rpm  | cpio -idmv
-	cd binaries/MeeGo_Wayland/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.18.i586.rpm    | cpio -idmv
-	
-	# Unpacking Tizen1.0 binaries - 1.16?! Seems like Intel took the wrong version/name for the files
-	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-bin-3398-1.16.i586.rpm    | cpio -idmv
-	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-devel-3398-1.16.i586.rpm  | cpio -idmv
-	cd binaries/Tizen1.0/rpm_contents/ && rpm2cpio ../emgd-gui-3398-1.16.i586.rpm    | cpio -idmv
-	
-	## Copying missing lib from Tizen to MeeGo_Wayland..
-	cp binaries/Tizen1.0/rpm_contents/usr/lib/libwayland-emgd.so.1.5.15.3226 binaries/MeeGo_Wayland/rpm_contents/usr/lib/
-	
-	## Adding missing symlinks
-	# MeeGo_Wayland
-	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libemgdsrv_um.so.1.5.15.3226     libemgdsrv_um.so
-	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libEMGDegl.so.1.5.15.3226        libEMGDegl.so
-	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libEMGD2d.so.1.5.15.3226         libEMGD2d.so
-	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-egl.so.1.5.15.3226  libwayland-egl.so.1
-	#cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-egl.so.1.1.5.15.3226  libwayland-egl.so
-	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-emgd.so.1.5.15.3226 libwayland-emgd.so.1
-	cd binaries/MeeGo_Wayland/rpm_contents/usr/lib/ && ln -s libwayland-emgd.so.1.5.15.3226 libwayland-emgd.so
-	
 	# Unpacking video_plugin
 	mkdir -p video_plugin/rpm_contents/
 	cd video_plugin/rpm_contents/ && rpm2cpio ../gst-plugins-mixvideo-0.10.39-1.i586.rpm | cpio -idmv
@@ -64,5 +24,8 @@ override_dh_auto_configure:
 	cd video_plugin/rpm_contents/ && rpm2cpio ../mixvbp-0.10.9-1.i586.rpm                | cpio -idmv
 	cd video_plugin/rpm_contents/ && rpm2cpio ../mixvideo-0.10.10-1.i586.rpm             | cpio -idmv
 
+override_dh_auto_build:
+	make -C binaries
+	
 override_dh_shlibdeps:
 	dh_shlibdeps --ignore-missing-info
