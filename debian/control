@@ -101,6 +101,10 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  xserver-xorg-core | xserver-xorg-1.9-core,
 Conflicts:
  xserver-xorg-core (<< 1.9), xserver-xorg-core (>= 1.10)
+Breaks:
+ xserver-xorg-1.9-video-emgd-meego1.2,
+ xserver-xorg-1.9-video-emgd-meego-wayland,
+ xserver-xorg-1.9-video-emgd-tizen1.0,
 Description: Intel emgd xserver driver for Fedora14.
 
 Package: xserver-xorg-1.9-video-emgd-meego1.2
@@ -109,6 +113,10 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  xserver-xorg-core | xserver-xorg-1.9-core,
 Conflicts:
  xserver-xorg-core (<< 1.9), xserver-xorg-core (>= 1.10)
+Breaks:
+ xserver-xorg-1.9-video-emgd-fedora14,
+ xserver-xorg-1.9-video-emgd-meego-wayland,
+ xserver-xorg-1.9-video-emgd-tizen1.0,
 Description: Intel emgd xserver driver for MeeGo1.2.
 
 Package: xserver-xorg-1.9-video-emgd-meego-wayland
@@ -117,6 +125,10 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  xserver-xorg-core | xserver-xorg-1.9-core,
 Conflicts:
  xserver-xorg-core (<< 1.9), xserver-xorg-core (>= 1.10)
+Breaks:
+ xserver-xorg-1.9-video-emgd-fedora14,
+ xserver-xorg-1.9-video-emgd-meego1.2,
+ xserver-xorg-1.9-video-emgd-tizen1.0,
 Description: Intel emgd xserver driver for MeeGo+Wayland.
 
 Package: xserver-xorg-1.9-video-emgd-tizen1.0
@@ -124,6 +136,10 @@ Architecture: i386
 Depends: ${shlibs:Depends}, ${misc:Depends},
  xserver-xorg-core | xserver-xorg-1.9-core,
  xorg-video-abi-8
+Breaks:
+ xserver-xorg-1.9-video-emgd-fedora14,
+ xserver-xorg-1.9-video-emgd-meego1.2,
+ xserver-xorg-1.9-video-emgd-meego-wayland,
 Description: Intel emgd xserver driver for Tizen1.0.
 
 Package: emgd-headers
