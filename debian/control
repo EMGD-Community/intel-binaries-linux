@@ -111,8 +111,17 @@ Package: xserver-xorg-1.9-video-emgd-meego1.2
 Architecture: i386
 Depends: ${shlibs:Depends}, ${misc:Depends},
  xserver-xorg-core | xserver-xorg-1.9-core,
+Provides:
+ libegl1-mesa-7.9,
+ libegl1-mesa
+ libegl1-x11
 Conflicts:
- xserver-xorg-core (<< 1.9), xserver-xorg-core (>= 1.10)
+ xserver-xorg-core (<< 1.9), xserver-xorg-core (>= 1.10),
+ libegl1-mesa-7.9,
+ libegl1-mesa
+Replaces:
+ libegl1-mesa-7.9,
+ libegl1-mesa
 Breaks:
  xserver-xorg-1.9-video-emgd-fedora14,
  xserver-xorg-1.9-video-emgd-meego-wayland,
