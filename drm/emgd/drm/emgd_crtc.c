@@ -284,7 +284,9 @@ static int emgd_crtc_mode_set(struct drm_crtc *crtc,
 	timing->width = adjusted_mode->crtc_hdisplay;
 	timing->height = adjusted_mode->crtc_vdisplay;
 	timing->refresh = adjusted_mode->vrefresh;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 	timing->dclk = adjusted_mode->synth_clock; /* Is this the right variable? */
+#endif
 	timing->htotal = adjusted_mode->crtc_htotal;
 	timing->hblank_start = adjusted_mode->crtc_hblank_start;
 	timing->hblank_end = adjusted_mode->crtc_hblank_end;
@@ -295,7 +297,9 @@ static int emgd_crtc_mode_set(struct drm_crtc *crtc,
 	timing->vblank_end = adjusted_mode->crtc_vblank_end;
 	timing->vsync_start = adjusted_mode->crtc_vsync_start;
 	timing->vsync_end = adjusted_mode->crtc_vsync_end;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 	timing->mode_number = adjusted_mode->clock_index;
+#endif
 	timing->mode_info_flags = adjusted_mode->private_flags;
 	timing->x_offset = x;
 	timing->y_offset = y;

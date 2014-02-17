@@ -2467,7 +2467,7 @@ static struct pci_driver emgd_pci_driver = EMGD_PCI_DRIVER;
 #else
 #define IOCTL ioctl
 #endif
-
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(3,12,0))
 #define EMGD_FOPS { \
     .owner   = THIS_MODULE,        \
     .open    = drm_open,           \
@@ -2478,6 +2478,17 @@ static struct pci_driver emgd_pci_driver = EMGD_PCI_DRIVER;
     .fasync  = drm_fasync,         \
     .read    = drm_read,           \
 }
+#else
+#define EMGD_FOPS { \
+    .owner   = THIS_MODULE,        \
+    .open    = drm_open,           \
+    .release = drm_release,        \
+	.IOCTL   = drm_ioctl,		   \
+    .mmap    = emgd_mmap,          \
+    .poll    = drm_poll,           \
+    .read    = drm_read,           \
+}
+#endif
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0))
 static const struct file_operations emgd_driver_fops = EMGD_FOPS;

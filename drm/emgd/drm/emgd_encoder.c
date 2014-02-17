@@ -212,7 +212,9 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 	pt_info->width        = mode->crtc_hdisplay;
 	pt_info->height       = mode->crtc_vdisplay;
 	pt_info->refresh      = mode->vrefresh;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 	pt_info->dclk         = mode->synth_clock;
+#endif
 	pt_info->htotal       = mode->crtc_htotal;
 	pt_info->hblank_start = mode->crtc_hblank_start;
 	pt_info->hblank_end   = mode->crtc_hblank_end;
@@ -223,7 +225,9 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 	pt_info->vblank_end   = mode->crtc_vblank_end;
 	pt_info->vsync_start  = mode->crtc_vsync_start;
 	pt_info->vsync_end    = mode->crtc_vsync_end;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 	pt_info->mode_number  = mode->clock_index;
+#endif
 	pt_info->flags        = 0;
 	EMGD_DEBUG("Setting pt_info to: %dx%d", pt_info->width, pt_info->height);
 
@@ -234,7 +238,9 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 		adjusted_mode->crtc_hdisplay     = timing->width;
 		adjusted_mode->crtc_vdisplay     = timing->height;
 		adjusted_mode->vrefresh          = timing->refresh;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 		adjusted_mode->synth_clock       = timing->dclk;
+#endif
 		adjusted_mode->crtc_htotal       = timing->htotal;
 		adjusted_mode->crtc_hblank_start = timing->hblank_start;
 		adjusted_mode->crtc_hblank_end   = timing->hblank_end;
@@ -245,7 +251,9 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 		adjusted_mode->crtc_vblank_end   = timing->vblank_end;
 		adjusted_mode->crtc_vsync_start  = timing->vsync_start;
 		adjusted_mode->crtc_vsync_end    = timing->vsync_end;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 		adjusted_mode->clock_index       = timing->mode_number;
+#endif
 		adjusted_mode->private_flags     = timing->mode_info_flags;
 
 		EMGD_DEBUG("(%dx%d@%d)->(%dx%d@%d)",
@@ -420,7 +428,9 @@ static void emgd_encoder_mode_set(struct drm_encoder *encoder,
 			port->pt_info->width        = adjusted_mode->crtc_hdisplay;
 			port->pt_info->height       = adjusted_mode->crtc_vdisplay;
 			port->pt_info->refresh      = adjusted_mode->vrefresh;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 			port->pt_info->dclk         = adjusted_mode->synth_clock;
+#endif
 			port->pt_info->htotal       = adjusted_mode->crtc_htotal;
 			port->pt_info->hblank_start = adjusted_mode->crtc_hblank_start;
 			port->pt_info->hblank_end   = adjusted_mode->crtc_hblank_end;
@@ -431,7 +441,9 @@ static void emgd_encoder_mode_set(struct drm_encoder *encoder,
 			port->pt_info->vblank_end   = adjusted_mode->crtc_vblank_end;
 			port->pt_info->vsync_start  = adjusted_mode->crtc_vsync_start;
 			port->pt_info->vsync_end    = adjusted_mode->crtc_vsync_end;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 			port->pt_info->mode_number  = adjusted_mode->clock_index;
+#endif
 			port->pt_info->flags        = adjusted_mode->private_flags;
 
 			port->pt_info->x_offset     = timing->x_offset;
