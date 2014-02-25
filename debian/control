@@ -15,8 +15,8 @@ Build-Depends: debhelper (>= 9),
  libxdmcp6, libxau6,
 # wayland
  libwayland-client0, libgbm1,
-# video accel
- libva-emgd-dev | libva-dev , libgstreamer-plugins-base0.10-dev,
+# multimedia accel
+ libva-1.0.15-dev | libva-emgd-dev | libva-dev , libgstreamer-plugins-base0.10-dev,
 Standards-Version: 3.8.1
 
 Package: emgd-driver
