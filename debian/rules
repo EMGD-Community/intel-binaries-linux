@@ -2,7 +2,7 @@
 # -*- makefile -*-
 
 # Uncomment this to turn on verbose mode.
-export DH_VERBOSE=1
+#export DH_VERBOSE=1
 
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
@@ -15,6 +15,13 @@ override_dh_clean:
 	
 	# removing all unpacked binaries
 	rm -rfv video_plugin/rpm_contents/
+	
+	# removing all generated *.postinst/prerm
+	set -e ; for DISTRIBUTION in \
+		fedora14 meego1.2 meego-wayland tizen1.0 ; do \
+			rm -rfv debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION.postinst \
+			        debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION.prerm \
+		; done
 
 override_dh_auto_configure:
 	# Unpacking video_plugin
@@ -28,12 +35,43 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	make -C binaries
+	
+	for file in debian/*.in; \
+	do \
+		sed -e"s,\$${DEB_HOST_MULTIARCH},$(DEB_HOST_MULTIARCH),g" \
+			$${file} > $${file%%.in}; \
+	done
 
 override_dh_install:
 	dh_install
-	echo "/usr/lib/$(DEB_HOST_MULTIARCH)/emgd" \
-	> $(CURDIR)/debian/xserver-xorg-1.9-video-emgd-fedora14/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/ld.so.conf
+	set -e ; for DISTRIBUTION in \
+		fedora14 meego1.2 meego-wayland tizen1.0 ; do \
+			echo "/usr/lib/$(DEB_HOST_MULTIARCH)/emgd" \
+	                > $(CURDIR)/debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/ld.so.conf \
+		; done
+
+override_dh_makeshlibs:
+	set -e ; for DISTRIBUTION in \
+		fedora14 meego1.2 meego-wayland tizen1.0 ; do \
+			dh_makeshlibs -pxserver-xorg-1.9-video-emgd-$$DISTRIBUTION -- -c4 \
+			-edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/\* \
+                        -edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/dri/\* \
+                        -edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/xorg/\* \
+		; done
+	dh_makeshlibs -s --remaining-packages -- -c4
 
 override_dh_shlibdeps:
-	dh_shlibdeps -Lxserver-xorg-1.9-video-emgd-fedora14 -l$(CURDIR)/debian/xserver-xorg-1.9-video-emgd-fedora14/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/
-	dh_shlibdeps --ignore-missing-info --remaining-packages
+	set -e ; for DISTRIBUTION in \
+		fedora14 meego1.2 meego-wayland tizen1.0 ; do \
+			dh_shlibdeps -pxserver-xorg-1.9-video-emgd-$$DISTRIBUTION \
+			-l/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/ -- \
+			-S$(CURDIR)/debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/ \
+			-xxserver-xorg-1.9-video-emgd-fedora14 \
+			-xxserver-xorg-1.9-video-emgd-meego1.2 \
+			-xxserver-xorg-1.9-video-emgd-meego-wayland \
+			-xxserver-xorg-1.9-video-emgd-tizen1.0 \
+		; done
+	
+	#dh_shlibdeps -pxserver-xorg-1.9-video-emgd-fedora14 -l/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/
+	#dh_shlibdeps --remaining-packages
+	dh_shlibdeps -s --remaining-packages -l/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/
