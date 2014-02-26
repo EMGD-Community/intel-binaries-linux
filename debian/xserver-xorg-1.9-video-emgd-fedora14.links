@@ -1,0 +1,25 @@
+# VA-API
+/usr/lib/i386-linux-gnu/emgd-egl/dri/emgd_drv_video.so			/usr/lib/i386-linux-gnu/dri/emgd_drv_video.so
+
+# libEGL  - dev
+/usr/lib/i386-linux-gnu/emgd-egl/libEGL.so				/usr/lib/i386-linux-gnu/libEGL.so
+##/usr/lib/i386-linux-gnu/emgd-egl/libwayland-egl.so			/usr/lib/i386-linux-gnu/libwayland-egl.so
+
+# libGLES1 - dev
+/usr/lib/i386-linux-gnu/emgd-egl/libGLES_CM.so				/usr/lib/i386-linux-gnu/emgd-egl/libGLESv1_CM.so
+/usr/lib/i386-linux-gnu/emgd-egl/libGLESv1_CM.so			/usr/lib/i386-linux-gnu/libGLESv1_CM.so
+
+# libGLES2 - dev
+/usr/lib/i386-linux-gnu/emgd-egl/libGLESv2.so				/usr/lib/i386-linux-gnu/libGLESv2.so
+
+# libGL1 dri
+/usr/lib/i386-linux-gnu/emgd-egl/dri/emgd_dri.so			/usr/lib/i386-linux-gnu/dri/emgd_dri.so
+
+# libOpenVG - dev
+/usr/lib/i386-linux-gnu/emgd-egl/libOpenVG.so				/usr/lib/i386-linux-gnu/libOpenVG.so
+
+# libOpenVGU - dev
+/usr/lib/i386-linux-gnu/emgd-egl/libOpenVGU.so				/usr/lib/i386-linux-gnu/libOpenVGU.so
+
+# Xorg module
+/usr/lib/i386-linux-gnu/emgd-egl/xorg/modules/drivers/emgd_drv.so	/usr/lib/i386-linux-gnu/xorg/modules/drivers/emgd_drv.so
