@@ -1,5 +1,6 @@
-# VA-API
+# VA-API/GLX
 /usr/lib/i386-linux-gnu/emgd/dri/emgd_drv_video.so			/usr/lib/i386-linux-gnu/dri/emgd_drv_video.so
+/usr/lib/i386-linux-gnu/emgd/dri/emgd_drv_video.so                      /usr/lib/dri/emgd_drv_video.so
 
 # libEGL  - dev
 #/usr/lib/i386-linux-gnu/emgd/libEGL.so				/usr/lib/i386-linux-gnu/libEGL.so
@@ -23,3 +24,4 @@
 
 # Xorg module
 /usr/lib/i386-linux-gnu/emgd/xorg/modules/drivers/emgd_drv.so	/usr/lib/i386-linux-gnu/xorg/modules/drivers/emgd_drv.so
+/usr/lib/i386-linux-gnu/emgd/xorg/modules/drivers/emgd_drv.so   /usr/lib/xorg/modules/drivers/emgd_drv.so
