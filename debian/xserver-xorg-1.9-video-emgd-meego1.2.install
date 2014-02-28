@@ -1,8 +1,8 @@
 # docs and manuals
-binaries/MeeGo1.2/rpm_contents/usr/share/doc		/usr/share/
-binaries/MeeGo1.2/rpm_contents/usr/share/man		/usr/share/
+binaries/MeeGo1.2/rpm_contents/usr/share/doc				/usr/share/
+binaries/MeeGo1.2/rpm_contents/usr/share/man				/usr/share/
 # binaries
 binaries/MeeGo1.2/rpm_contents/usr/lib/*.so				/usr/lib/i386-linux-gnu/emgd/
-binaries/MeeGo1.2/rpm_contents/usr/lib/*.so.*			/usr/lib/i386-linux-gnu/emgd/
+binaries/MeeGo1.2/rpm_contents/usr/lib/*.so.*				/usr/lib/i386-linux-gnu/emgd/
 binaries/MeeGo1.2/rpm_contents/usr/lib/dri				/usr/lib/i386-linux-gnu/emgd/
 binaries/MeeGo1.2/rpm_contents/usr/lib/xorg 				/usr/lib/i386-linux-gnu/emgd/
