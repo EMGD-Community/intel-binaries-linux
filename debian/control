@@ -145,9 +145,9 @@ Description: Intel emgd xserver driver for MeeGo1.2.
 Package: xserver-xorg-1.9-video-emgd-meego-wayland
 Architecture: i386
 Depends: ${shlibs:Depends}, ${misc:Depends},
- xserver-xorg-core | xserver-xorg-1.9-core,
+ xserver-xorg-core | xserver-xorg-1.10-core,
 Conflicts:
- xserver-xorg-core (<< 1.9), xserver-xorg-core (>= 1.10),
+ xserver-xorg-core (<< 1.10), xserver-xorg-core (>= 1.11),
 Breaks:
  xserver-xorg-1.9-video-emgd-fedora14,
  xserver-xorg-1.9-video-emgd-meego1.2,

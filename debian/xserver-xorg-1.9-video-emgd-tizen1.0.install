@@ -1,8 +1,8 @@
 # docs and manuals
-binaries/Tizen1.0/rpm_contents/usr/share/doc		/usr/share/
-binaries/Tizen1.0/rpm_contents/usr/share/man		/usr/share/
+binaries/Tizen1.0/rpm_contents/usr/share/doc				/usr/share/
+binaries/Tizen1.0/rpm_contents/usr/share/man				/usr/share/
 # binaries
 binaries/Tizen1.0/rpm_contents/usr/lib/*.so				/usr/lib/i386-linux-gnu/emgd/
-binaries/Tizen1.0/rpm_contents/usr/lib/*.so.*			/usr/lib/i386-linux-gnu/emgd/
+binaries/Tizen1.0/rpm_contents/usr/lib/*.so.*				/usr/lib/i386-linux-gnu/emgd/
 binaries/Tizen1.0/rpm_contents/usr/lib/dri				/usr/lib/i386-linux-gnu/emgd/
 binaries/Tizen1.0/rpm_contents/usr/lib/xorg 				/usr/lib/i386-linux-gnu/emgd/
