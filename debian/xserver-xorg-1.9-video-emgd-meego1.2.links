@@ -2,8 +2,8 @@
 /usr/lib/i386-linux-gnu/emgd/dri/emgd_drv_video.so			/usr/lib/i386-linux-gnu/dri/emgd_drv_video.so
 
 # libEGL  - dev
-#/usr/lib/i386-linux-gnu/emgd/libEGL.so				/usr/lib/i386-linux-gnu/libEGL.so
-##/usr/lib/i386-linux-gnu/emgd/libwayland-egl.so			/usr/lib/i386-linux-gnu/libwayland-egl.so
+#/usr/lib/i386-linux-gnu/emgd/libEGL.so				    /usr/lib/i386-linux-gnu/libEGL.so
+##/usr/lib/i386-linux-gnu/emgd/libwayland-egl.so	/usr/lib/i386-linux-gnu/libwayland-egl.so
 
 # libGLES1 - dev
 #/usr/lib/i386-linux-gnu/emgd/libGLES_CM.so				/usr/lib/i386-linux-gnu/emgd/libGLESv1_CM.so
@@ -26,5 +26,5 @@
 /usr/lib/i386-linux-gnu/emgd/xorg/modules/drivers/emgd_drv.so   /usr/lib/xorg/modules/drivers/emgd_drv.so
 
 # GLX
-/usr/lib/i386-linux-gnu/emgd/dri/emgd_dri.so                            /usr/lib/dri/i386-linux-gnu/emgd_dri.so.so
-/usr/lib/i386-linux-gnu/emgd/dri/emgd_dri.so                           /usr/lib/dri/emgd_dri.so
+/usr/lib/i386-linux-gnu/emgd/dri/emgd_dri.so      /usr/lib/i386-linux-gnu/dri/emgd_dri.so.so
+/usr/lib/i386-linux-gnu/emgd/dri/emgd_dri.so      /usr/lib/dri/emgd_dri.so
