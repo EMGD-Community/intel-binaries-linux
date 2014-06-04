@@ -58,6 +58,12 @@ override_dh_makeshlibs:
                         -edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/dri/\* \
                         -edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/xorg/\* \
 		; done
+	
+	set -e ; for GST_PACKAGE in \
+                gstreamer0.10-mix gstreamer0.10-va  ; do \
+                        dh_makeshlibs -p$$GST_PACKAGE -- -c4 \
+                        -edebian/$$GST_PACKAGE/usr/lib/i386-linux-gnu/gstreamer-0.10/\* \
+                ; done
 	dh_makeshlibs -s --remaining-packages -- -c4
 
 override_dh_shlibdeps:
