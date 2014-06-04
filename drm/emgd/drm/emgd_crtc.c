@@ -348,7 +348,13 @@ static int emgd_crtc_mode_set_base(struct drm_crtc *crtc, int x, int y,
 
 
 	emgd_crtc = container_of(crtc, emgd_crtc_t, base);
+	/* According to LKML something changed here - https://lkml.org/lkml/2014/4/2/622 */
+        /* Might be a fix for the EMGD driver */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
 	fb        = crtc->fb;
+#else
+	fb        = crtc->primary->fb;
+#endif
 	emgd_fb   = container_of(fb, emgd_framebuffer_t, base);
 	display   = emgd_crtc->igd_pipe->owner;
 
@@ -1016,7 +1022,14 @@ static int emgd_crtc_page_flip(struct drm_crtc *crtc,
 	}
 
 	/* Move the FB currently associated with the CRTC to the new FB */
+
+	/* According to LKML something changed here - https://lkml.org/lkml/2014/4/2/622 */
+	/* Might be a fix for the EMGD driver */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
 	crtc->fb = fb;
+#else
+	crtc->primary->fb = fb;
+#endif
 
 	/* Done updating CRTC structure */
 	spin_unlock_irqrestore(&emgd_crtc->crtc_lock, flags);

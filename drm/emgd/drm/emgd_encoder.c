@@ -205,8 +205,17 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 	/* Get the dimension of the framebuffer linked to the CRTC.  If it is
 	 * smaller than the resolution, kms_match_mode will either center it
 	 * or let the encoder hardware scale it */
+
+	/* According to LKML something changed here - https://lkml.org/lkml/2014/4/2/622 */
+	/* Might be a fix for the EMGD driver */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
 	fb_info->width  = encoder->crtc->fb->width;
 	fb_info->height = encoder->crtc->fb->height;
+#else
+	fb_info->width  = encoder->crtc->primary->fb->width;
+	fb_info->height = encoder->crtc->primary->fb->height;
+#endif
+
 	EMGD_DEBUG("Setting fb_info to: %dx%d", fb_info->width, fb_info->height);
 
 	pt_info->width        = mode->crtc_hdisplay;

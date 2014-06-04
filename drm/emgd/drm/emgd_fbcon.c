@@ -789,13 +789,27 @@ int emgd_fbcon_initial_config(emgd_fbdev_t *emgd_fbdev)
 			emgd_crtc = container_of(crtc, emgd_crtc_t, base);
 
 			if (PIPE(primary) == emgd_crtc->igd_pipe) {
+
+				/* According to LKML something changed here - https://lkml.org/lkml/2014/4/2/622 */
+				/* Might be a fix for the EMGD driver */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
 				crtc->fb = &emgd_fbdev->emgd_fb->base;
+#else
+				crtc->primary->fb = &emgd_fbdev->emgd_fb->base;
+#endif
 			}
 
 			/* Attach frame buffer to the secondary CRTC, if necessary */
 			if (IGD_DC_SECONDARY(*dc_assigned) &&
 				PIPE(secondary) == emgd_crtc->igd_pipe) {
+
+					/* According to LKML something changed here - https://lkml.org/lkml/2014/4/2/622 */
+					/* Might be a fix for the EMGD driver */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
 				crtc->fb = &emgd_fbdev->emgd_fb->base;
+#else
+				crtc->primary->fb = &emgd_fbdev->emgd_fb->base;
+#endif
 			}
 		}
 
