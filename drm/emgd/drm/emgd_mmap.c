@@ -153,7 +153,11 @@ static void emgd_vm_open(struct vm_area_struct *vma)
 	 * Does the DRM really need to keep track of the count if we're managing
 	 * everything?
 	 */
+
+        /*Well, as they removed it now (3.14) it doesn't seem so. Hope EMGD doesn't make any use of that... */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,14,0)
 	atomic_inc(&dev->vma_count);
+#endif
 
 	/*
 	 * DRM code maintains a list of vma's and when open is
@@ -175,7 +179,11 @@ static void emgd_vm_close(struct vm_area_struct *vma)
 	 * Does the DRM really need to keep track of the count if we're managing
 	 * everything?
 	 */
+
+        /*Well, as they removed it now (3.14) it doesn't seem so. Hope EMGD doesn't make any use of that... */
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,14,0)
 	atomic_dec(&dev->vma_count);
+#endif
 
 	/*
 	 * DRM code maintains a list of vma's and when close is
