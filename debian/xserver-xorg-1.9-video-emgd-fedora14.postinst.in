@@ -9,7 +9,7 @@ case "$1" in
   configure)
   # Use alternatives to make it easier to switch between EMGD, MESA and other 3rd party modules
   update-alternatives --force \
-    --install /etc/ld.so.conf.d/${DEB_HOST_MULTIARCH}_EGL.conf ${DEB_HOST_MULTIARCH}_egl_conf /usr/lib/${DEB_HOST_MULTIARCH}/emgd/ld.so.conf 600 \
+    --install /etc/ld.so.conf.d/${DEB_HOST_MULTIARCH}_EGL.conf ${DEB_HOST_MULTIARCH}_egl_conf /usr/lib/${DEB_HOST_MULTIARCH}/emgd/ld.so.conf 751 \
 
   # ldconfig needs to be run immediately as we're changing /etc/ld.so.conf.d/ with
   # alternatives.

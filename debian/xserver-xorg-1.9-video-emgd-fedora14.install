@@ -2,7 +2,7 @@
 binaries/F14/rpm_contents/usr/share/doc				/usr/share/
 binaries/F14/rpm_contents/usr/share/man				/usr/share/
 # binaries
-binaries/F14/rpm_contents/usr/lib/*.so				/usr/lib/i386-linux-gnu/emgd/
-binaries/F14/rpm_contents/usr/lib/*.so.*			/usr/lib/i386-linux-gnu/emgd/
-binaries/F14/rpm_contents/usr/lib/dri				/usr/lib/i386-linux-gnu/emgd/
-binaries/F14/rpm_contents/usr/lib/xorg 				/usr/lib/i386-linux-gnu/emgd/
+binaries/F14/rpm_contents/usr/lib/*.so				/usr/lib/i386-linux-gnu/emgd-fedora14/
+binaries/F14/rpm_contents/usr/lib/*.so.*			/usr/lib/i386-linux-gnu/emgd-fedora14/
+binaries/F14/rpm_contents/usr/lib/dri				/usr/lib/i386-linux-gnu/emgd-fedora14/
+binaries/F14/rpm_contents/usr/lib/xorg 				/usr/lib/i386-linux-gnu/emgd-fedora14/

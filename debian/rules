@@ -46,7 +46,7 @@ override_dh_install:
 	dh_install
 	set -e ; for DISTRIBUTION in \
 		fedora14 meego1.2 meego-wayland tizen1.0 ; do \
-			echo "/usr/lib/$(DEB_HOST_MULTIARCH)/emgd" \
+			echo "/usr/lib/$(DEB_HOST_MULTIARCH)/emgd-$$DISTRIBUTION" \
 	                > $(CURDIR)/debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/ld.so.conf \
 		; done
 

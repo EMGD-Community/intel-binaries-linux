@@ -2,7 +2,7 @@
 binaries/MeeGo_Wayland/rpm_contents/usr/share/doc				/usr/share/
 binaries/MeeGo_Wayland/rpm_contents/usr/share/man				/usr/share/
 # binaries
-binaries/MeeGo_Wayland/rpm_contents/usr/lib/*.so				/usr/lib/i386-linux-gnu/emgd/
-binaries/MeeGo_Wayland/rpm_contents/usr/lib/*.so.*				/usr/lib/i386-linux-gnu/emgd/
-binaries/MeeGo_Wayland/rpm_contents/usr/lib/dri					/usr/lib/i386-linux-gnu/emgd/
-binaries/MeeGo_Wayland/rpm_contents/usr/lib/xorg 				/usr/lib/i386-linux-gnu/emgd/
+binaries/MeeGo_Wayland/rpm_contents/usr/lib/*.so				/usr/lib/i386-linux-gnu/emgd-meego-wayland/
+binaries/MeeGo_Wayland/rpm_contents/usr/lib/*.so.*				/usr/lib/i386-linux-gnu/emgd-meego-wayland/
+binaries/MeeGo_Wayland/rpm_contents/usr/lib/dri					/usr/lib/i386-linux-gnu/emgd-meego-wayland/
+binaries/MeeGo_Wayland/rpm_contents/usr/lib/xorg 				/usr/lib/i386-linux-gnu/emgd-meego-wayland/
