@@ -1,0 +1,2 @@
+config/blacklist-gma500.conf  /etc/modprobe.d/
+config/emgd.conf              /etc/modprobe.d/
