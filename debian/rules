@@ -47,16 +47,16 @@ override_dh_install:
 	set -e ; for DISTRIBUTION in \
 		fedora14 meego1.2 meego-wayland tizen1.0 ; do \
 			echo "/usr/lib/$(DEB_HOST_MULTIARCH)/emgd-$$DISTRIBUTION" \
-	                > $(CURDIR)/debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/ld.so.conf \
+	                > $(CURDIR)/debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd-$$DISTRIBUTION/ld.so.conf \
 		; done
 
 override_dh_makeshlibs:
 	set -e ; for DISTRIBUTION in \
 		fedora14 meego1.2 meego-wayland tizen1.0 ; do \
 			dh_makeshlibs -pxserver-xorg-1.9-video-emgd-$$DISTRIBUTION -- -c4 \
-			-edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/\* \
-                        -edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/dri/\* \
-                        -edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/xorg/\* \
+			-edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd-$$DISTRIBUTION/\* \
+                        -edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd-$$DISTRIBUTION/dri/\* \
+                        -edebian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd-$$DISTRIBUTION/xorg/\* \
 		; done
 	
 	set -e ; for GST_PACKAGE in \
@@ -70,8 +70,8 @@ override_dh_shlibdeps:
 	set -e ; for DISTRIBUTION in \
 		fedora14 meego1.2 meego-wayland tizen1.0 ; do \
 			dh_shlibdeps -pxserver-xorg-1.9-video-emgd-$$DISTRIBUTION \
-			-l/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/ -- \
-			-S$(CURDIR)/debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd/ \
+			-l/usr/lib/$(DEB_HOST_MULTIARCH)/emgd-$$DISTRIBUTION/ -- \
+			-S$(CURDIR)/debian/xserver-xorg-1.9-video-emgd-$$DISTRIBUTION/usr/lib/$(DEB_HOST_MULTIARCH)/emgd-$$DISTRIBUTION/ \
 			-xxserver-xorg-1.9-video-emgd-fedora14 \
 			-xxserver-xorg-1.9-video-emgd-meego1.2 \
 			-xxserver-xorg-1.9-video-emgd-meego-wayland \
