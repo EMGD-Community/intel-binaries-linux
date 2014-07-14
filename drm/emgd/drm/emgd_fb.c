@@ -35,13 +35,21 @@
 #include <linux/device.h>
 #include <linux/fb.h>
 #include <linux/version.h>
+
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0)
 #include <linux/export.h>
 #else
 #include <linux/module.h>
 #endif
+
 #include <drmP.h>
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0)
 #include <uapi/drm/drm.h>
+#else
+#include <drm.h>
+#endif
+
 #include <drm_crtc.h>
 #include <drm_crtc_helper.h>
 #include <drm_fb_helper.h>
@@ -538,8 +546,11 @@ static void create_connector_properties(struct drm_device *dev,
 				EMGD_ERROR("Unsupported PD Attribute type");
 				continue;
 		}
-
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0)
 		drm_object_attach_property(&drm_connector->base, new_prop, current_value);
+#else
+        drm_connector_attach_property(drm_connector, new_prop, current_value);
+#endif
 		emgd_connector->properties[num_of_properties++] = new_prop;
 	}
 
@@ -646,13 +657,23 @@ static void create_connectors(struct drm_device *dev,
 
 
 #if 0
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0)
         drm_object_attach_property(&connector->base,
-                        dev->mode_config.scaling_mode_property,
-                        DRM_MODE_SCALE_FULLSCREEN);
+                                   dev->mode_config.scaling_mode_property,
+                                   DRM_MODE_SCALE_FULLSCREEN);
         drm_object_attach_property(&connector->base,
-                       dev->mode_config.edid_property, 0);
+                                   dev->mode_config.edid_property, 0);
         drm_object_attach_property(&connector->base,
-                       dev->mode_config.dpms_property, 0);
+                                   dev->mode_config.dpms_property, 0);
+#else
+        drm_connector_attach_property(&connector->base,
+                                      dev->mode_config.scaling_mode_property,
+                                      DRM_MODE_SCALE_FULLSCREEN);
+        drm_connector_attach_property(&connector->base,
+                                      dev->mode_config.edid_property, 0);
+        drm_connector_attach_property(&connector->base,
+                                      dev->mode_config.dpms_property, 0);
+#endif
 #endif
 
 

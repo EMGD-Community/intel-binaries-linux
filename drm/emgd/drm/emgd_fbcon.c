@@ -131,7 +131,11 @@ static void fill_fix(emgd_fbdev_t *emgd_fbdev, struct fb_info *info)
 	info->fix.ywrapstep   = 0;
 	info->fix.accel       = FB_ACCEL_NONE;
 	info->fix.type_aux    = 0;
-	info->fix.line_length = fb->DRMFB_PITCH;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0)
+    info->fix.line_length = fb->DRMFB_PITCH;
+#else    
+    info->fix.line_length = fb->pitches[0];
+#endif
 }
 
 
@@ -588,7 +592,11 @@ static int emgd_fbcon_set_par(struct fb_info *info)
 
 	surface.flags        = IGD_SURFACE_DISPLAY;
     surface.offset       = emgd_crtc->newfb->gtt_offset;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0)
     surface.pitch        = emgd_crtc->newfb->base.DRMFB_PITCH;
+#else
+    surface.pitch        = emgd_crtc->newfb->base.pitches[0];
+#endif
     surface.width        = emgd_crtc->newfb->base.width;
     surface.height       = emgd_crtc->newfb->base.height;
     surface.pixel_format = IGD_PF_ARGB32;
