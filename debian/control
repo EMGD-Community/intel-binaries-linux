@@ -23,7 +23,6 @@ Package: emgd-driver
 Architecture: all
 Depends:
  emgd-drm-dkms (> ${binary:Version}),
- emgd-headers  (> ${binary:Version}),
  emgd-utils    (> ${binary:Version}),
  xserver-xorg-1.9-video-emgd,
 Description: Intel emgd driver in DKMS format.
