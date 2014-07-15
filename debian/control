@@ -53,6 +53,8 @@ Package: emgd-utils-gui
 Architecture: all
 Depends: 
  emgd-utils-gui-meego1.2 (= ${binary:Version}) | emgd-utils-gui-meego-wayland (= ${binary:Version}) | emgd-utils-gui-tizen1.0 (= ${binary:Version}) | emgd-utils-gui-fedora14 (= ${binary:Version})
+Recommends:
+ emgd-utils-gui-meego1.2,
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-utils-gui-fedora14
@@ -100,6 +102,8 @@ Package: xserver-xorg-1.9-video-emgd
 Architecture: all
 Depends:
  xserver-xorg-1.9-video-emgd-meego1.2 (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-meego-wayland (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-tizen1.0 (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-fedora14 (= ${binary:Version})
+Recommends:
+ xserver-xorg-1.9-video-emgd-meego1.2,
 Description: Intel emgd xserver driver.
 
 Package: xserver-xorg-1.9-video-emgd-fedora14
@@ -165,6 +169,8 @@ Package: emgd-headers
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}
  emgd-headers-meego1.2 (= ${binary:Version}) | emgd-headers-meego-wayland (= ${binary:Version}) | emgd-headers-tizen1.0 (= ${binary:Version}) | emgd-headers-fedora14 (= ${binary:Version}) | emgd-headers-common (= ${binary:Version}),
+Recommends:
+ emgd-headers-meego1.2,
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-headers-common
