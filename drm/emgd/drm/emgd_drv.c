@@ -578,7 +578,9 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 #endif
 };
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0)
 static int emgd_max_ioctl = DRM_ARRAY_SIZE(emgd_ioctl);
+#endif
 
 
 
@@ -2697,7 +2699,9 @@ static int __init emgd_init(void) {
 	struct pci_dev *our_device;
 
 	printk(KERN_INFO "[EMGD] Initializing Driver.\n");
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0)
 	driver.num_ioctls = emgd_max_ioctl;
+#endif
 
 	/* If init == 1 then we should always set KMS to 0 for US15 */
 
