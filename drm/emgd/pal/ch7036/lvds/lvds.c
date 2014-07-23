@@ -31,7 +31,8 @@
  *-----------------------------------------------------------------------------
  */
 
-#pragma optimize ("",off)
+#pragma GCC push_options
+#pragma GCC optimize ("O0")
 
 #include <config.h>
 #include <igd_pd.h>
@@ -1584,4 +1585,5 @@ static void internal_lvds_get_dclk(internal_lvds_context_t *pd_context, pd_dvo_i
 	PD_DEBUG("internal_lvds_dclk: at the end\n");
 }
 
-#pragma optimize ("",on)
+#pragma GCC push_options
+#pragma GCC optimize ("O0")
