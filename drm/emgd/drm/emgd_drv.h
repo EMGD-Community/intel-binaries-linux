@@ -73,7 +73,7 @@ extern long egd(struct file *filp, unsigned int cmd, unsigned long arg);
 extern int emgd_startup_hal(struct drm_device *dev, igd_param_t *params);
 int disp_splash_screen(emgd_drm_splash_screen_t *ss_data);
 int disp_splash_video(emgd_drm_splash_video_t *sv_data);
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 extern irqreturn_t emgd_driver_irq_handler(DRM_IRQ_ARGS);
 #else
 extern irqreturn_t emgd_driver_irq_handler(int irq, void *arg);
