@@ -33,8 +33,15 @@
 
 #define MODULE_NAME hal.oal
 
+#include <linux/version.h>
+
 #include "drmP.h"
-#include "uapi/drm/drm.h"
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0)
+#include <uapi/drm/drm.h>
+#else
+#include <drm.h>
+#endif
 
 #include "drm_emgd_private.h"
 #include "emgd_drm.h"

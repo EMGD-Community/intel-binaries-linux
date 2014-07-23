@@ -299,7 +299,11 @@ static int emgd_connector_set_property(struct drm_connector *connector,
 
 	/* Set the property value to the new one.  This doesn't actually change
      * anything on the HW. */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0)
 	ret = drm_object_property_set_value(&connector->base, property, value);
+#else
+	ret = drm_connector_property_set_value(connector, property, value);
+#endif
 	if (ret) {
 		return ret;
 	}

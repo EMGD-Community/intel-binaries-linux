@@ -367,12 +367,21 @@ static int emgd_crtc_mode_set_base(struct drm_crtc *crtc, int x, int y,
 
 	plane_fb_info->width          = fb->width;
 	plane_fb_info->height         = fb->height;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0)
 	plane_fb_info->screen_pitch   = fb->DRMFB_PITCH;
+#else
+	plane_fb_info->screen_pitch   = fb->pitches[0];
+#endif
 	plane_fb_info->flags          = 0;
 	plane_fb_info->allocated      = 1;
 	plane_fb_info->fb_base_offset = emgd_fb->gtt_offset;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0)
 	plane_fb_info->visible_offset = (y * fb->DRMFB_PITCH) +
 		(x * (fb->bits_per_pixel / 8));
+#else
+    plane_fb_info->visible_offset = (y * fb->pitches[0]) +
+		(x * (fb->bits_per_pixel / 8));
+#endif
 
 
 	PLANE(display)->inuse = 1;
@@ -864,7 +873,11 @@ void emgd_flip_worker(struct work_struct *w)
 		/* Rendering complete; program the plane registers */
 		igd_surface.flags        = IGD_SURFACE_DISPLAY;
 		igd_surface.offset       = crtc->newfb->gtt_offset;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0)
 		igd_surface.pitch        = crtc->newfb->base.DRMFB_PITCH;
+#else
+        igd_surface.pitch        = crtc->newfb->base.pitches[0];
+#endif
 		igd_surface.width        = crtc->newfb->base.width;
 		igd_surface.height       = crtc->newfb->base.height;
 		igd_surface.pixel_format = IGD_PF_ARGB32;
