@@ -62,6 +62,8 @@
 #endif
 
 /* This needs to contain the unsigned long for vBIOS. */
+#include <linux/bitops.h>
+
 #ifndef BIT
 #define BIT(x) (1L<<x)
 #endif
