@@ -578,7 +578,11 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 #endif
 };
 
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0)
 static int emgd_max_ioctl = DRM_ARRAY_SIZE(emgd_ioctl);
+#else
+static int emgd_max_ioctl =     ARRAY_SIZE(emgd_ioctl);
+#endif
 
 
 
