@@ -181,7 +181,7 @@ int process_mtx_messages(igd_context_t *context,
 		unsigned long *mtx_msgs, unsigned long mtx_msg_cnt,
 		unsigned long fence)
 {
-	unsigned char *mmio = context->device_context.virt_mmadr;
+	/* unsigned char *mmio = context->device_context.virt_mmadr; */
 	platform_context_plb_t *platform;
 	unsigned long submit_size;
 	unsigned long submit_id;
