@@ -475,7 +475,7 @@ int topaz_init_tnc (unsigned long wb_offset,
 	PVRSRV_PER_PROCESS_DATA *ps_data = NULL;
 	IMG_UINT32 pid = 0;
 	PVRSRV_KERNEL_MEM_INFO *mem_info_fw = NULL;
-	PVRSRV_KERNEL_MEM_INFO *mem_info_wb = NULL;
+	/* PVRSRV_KERNEL_MEM_INFO *mem_info_wb = NULL; */
 	struct msvdx_pvr_info   *pvr;
 
 	priv = gpDrmDevice->dev_private;
