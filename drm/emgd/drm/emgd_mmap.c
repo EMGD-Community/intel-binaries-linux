@@ -149,9 +149,8 @@ static int emgd_vm_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
  */
 static void emgd_vm_open(struct vm_area_struct *vma)
 {
-	struct drm_file *priv = vma->vm_file->private_data;
-
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,14,0)
+	struct drm_file *priv = vma->vm_file->private_data;
 	struct drm_device *dev = priv->minor->dev;
 
 	/*
@@ -176,9 +175,8 @@ static void emgd_vm_open(struct vm_area_struct *vma)
  */
 static void emgd_vm_close(struct vm_area_struct *vma)
 {
-	struct drm_file *priv = vma->vm_file->private_data;
-
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,14,0)
+	struct drm_file *priv = vma->vm_file->private_data;
 	struct drm_device *dev = priv->minor->dev;
 
 	/*
