@@ -51,10 +51,17 @@
 
 static void emgd_crtc_dpms(struct drm_crtc *crtc, int mode);
 static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
-		struct drm_display_mode *mode, struct drm_display_mode *adjusted_mode);
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+				 struct drm_display_mode *mode,
+#else
+				 const struct drm_display_mode *mode,
+#endif
+				 struct drm_display_mode *adjusted_mode);
 static int emgd_crtc_mode_set(struct drm_crtc *crtc,
-		struct drm_display_mode *mode, struct drm_display_mode *adjusted_mode,
-		int x, int y, struct drm_framebuffer *old_fb);
+			      struct drm_display_mode *mode,
+			      struct drm_display_mode *adjusted_mode,
+			      int x, int y,
+			      struct drm_framebuffer *old_fb);
 static int emgd_crtc_mode_set_base(struct drm_crtc *crtc, int x, int y,
 		struct drm_framebuffer *old_fb);
 static void emgd_crtc_prepare(struct drm_crtc *crtc);
@@ -75,8 +82,13 @@ static void emgd_crtc_gamma_set(struct drm_crtc *crtc,
 static void emgd_crtc_destroy(struct drm_crtc *crtc);
 static void emgd_crtc_load_lut(struct drm_crtc *crtc);
 static int emgd_crtc_page_flip(struct drm_crtc *crtc,
-                                struct drm_framebuffer *fb,
-                                struct drm_pending_vblank_event *event);
+			       struct drm_framebuffer *fb,
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+			       struct drm_pending_vblank_event *event);
+#else
+			       struct drm_pending_vblank_event *event,
+			       uint32_t page_flip_flags);
+#endif
 static int emgd_crtc_set_config(struct drm_mode_set *set);
 
 
@@ -213,8 +225,12 @@ static void emgd_crtc_dpms(struct drm_crtc *crtc, int mode)
 
 
 static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
-				struct drm_display_mode *mode,
-				struct drm_display_mode *adjusted_mode)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+				 struct drm_display_mode *mode,
+#else
+				 const struct drm_display_mode *mode,
+#endif
+				 struct drm_display_mode *adjusted_mode)
 {
 	EMGD_TRACE_ENTER;
 
@@ -876,7 +892,7 @@ void emgd_flip_worker(struct work_struct *w)
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0)
 		igd_surface.pitch        = crtc->newfb->base.DRMFB_PITCH;
 #else
-        igd_surface.pitch        = crtc->newfb->base.pitches[0];
+		igd_surface.pitch        = crtc->newfb->base.pitches[0];
 #endif
 		igd_surface.width        = crtc->newfb->base.width;
 		igd_surface.height       = crtc->newfb->base.height;
@@ -950,8 +966,13 @@ void emgd_flip_worker(struct work_struct *w)
  *  * vblank_expected is FALSE
  */
 static int emgd_crtc_page_flip(struct drm_crtc *crtc,
-                                struct drm_framebuffer *fb,
-                                struct drm_pending_vblank_event *event)
+			       struct drm_framebuffer *fb,
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+			       struct drm_pending_vblank_event *event)
+#else
+			       struct drm_pending_vblank_event *event,
+			       uint32_t page_flip_flags)
+#endif
 {
 	emgd_crtc_t        *emgd_crtc;
 	emgd_framebuffer_t *emgd_fb;
