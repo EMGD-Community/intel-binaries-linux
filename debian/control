@@ -21,6 +21,8 @@ Standards-Version: 3.8.1
 
 Package: emgd-driver
 Architecture: all
+Pre-Depends:
+ debconf (>= 0.2.17)
 Depends:
  emgd-drm-dkms (> ${binary:Version}),
  emgd-utils    (> ${binary:Version}),
