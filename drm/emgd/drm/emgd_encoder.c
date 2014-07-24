@@ -53,7 +53,11 @@ extern int calculate_eld(igd_display_port_t *port,
 static void emgd_encoder_destroy(struct drm_encoder *encoder);
 static void emgd_encoder_dpms(struct drm_encoder *encoder, int mode);
 static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
 				struct drm_display_mode *mode,
+#else
+				const struct drm_display_mode *mode,
+#endif
 				struct drm_display_mode *adjusted_mode);
 static void emgd_encoder_prepare(struct drm_encoder *encoder);
 static void emgd_encoder_mode_set(struct drm_encoder *encoder,
@@ -90,10 +94,11 @@ static void emgd_encoder_dpms(struct drm_encoder *encoder, int mode)
 {
 	emgd_crtc_t *emgd_crtc = container_of(encoder->crtc, emgd_crtc_t, base);
 	emgd_encoder_t *emgd_encoder = container_of(encoder, emgd_encoder_t, base);
-	igd_display_port_t *igd_port = emgd_encoder->igd_port;
-
+	// TODO: Compiler says it is unused but it is above in EMGD_DEBUG!
+	__attribute__((unused)) igd_display_port_t *igd_port = emgd_encoder->igd_port;
+	
 	EMGD_TRACE_ENTER;
-
+	
 	/* The following check is a work around for KMS tries to
 	 * program both the crtcs and ports (LVDS and SDVO)
 	 * even if it is in single mode. It results in a SIGSEGV.
@@ -102,7 +107,6 @@ static void emgd_encoder_dpms(struct drm_encoder *encoder, int mode)
 	 * port.
 	 */
 	if(emgd_crtc->igd_pipe->owner) {
-
 		EMGD_DEBUG("Setting port %lx power to %d",
 					igd_port->port_number, mode);
 
@@ -155,7 +159,11 @@ static void emgd_encoder_dpms(struct drm_encoder *encoder, int mode)
  * @return true, false (details TBD)
  */
 static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
 		struct drm_display_mode *mode,
+#else
+		const struct drm_display_mode *mode,
+#endif
 		struct drm_display_mode *adjusted_mode)
 {
 	struct drm_device      *dev          = NULL;
