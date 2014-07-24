@@ -1042,7 +1042,7 @@ int msvdx_init_plb(unsigned long base0, unsigned long base1,
     REGIO_WRITE_FIELD(reg_val, MSVDX_CORE_CR_FE_MSVDX_WDT_CONTROL, FE_WDT_ACTION0, 1);
     REGIO_WRITE_FIELD(reg_val, MSVDX_CORE_CR_FE_MSVDX_WDT_CONTROL, FE_WDT_CLEAR_SELECT, 1);
     REGIO_WRITE_FIELD(reg_val, MSVDX_CORE_CR_FE_MSVDX_WDT_CONTROL, FE_WDT_CLKDIV_SELECT, 7);
-    printk(KERN_INFO "CTL_MSG: WDT Control value = 0x%p", reg_val);
+    printk(KERN_INFO "CTL_MSG: WDT Control value = 0x%lu", reg_val);
     EMGD_WRITE32(0, mmio + MSVDX_CORE_CR_FE_MSVDX_WDT_COMPAREMATCH_OFFSET);
     EMGD_WRITE32(reg_val, mmio + MSVDX_CORE_CR_FE_MSVDX_WDT_CONTROL_OFFSET);
 
@@ -1052,7 +1052,7 @@ int msvdx_init_plb(unsigned long base0, unsigned long base1,
     REGIO_WRITE_FIELD(reg_val, MSVDX_CORE_CR_BE_MSVDX_WDT_CONTROL, BE_WDT_ACTION0, 1);
     REGIO_WRITE_FIELD(reg_val, MSVDX_CORE_CR_BE_MSVDX_WDT_CONTROL, BE_WDT_CLEAR_SELECT, 0xd);
     REGIO_WRITE_FIELD(reg_val, MSVDX_CORE_CR_BE_MSVDX_WDT_CONTROL, BE_WDT_CLKDIV_SELECT, 7);
-    printk(KERN_INFO "CTL_MSG: WDT Control value = 0x%p", reg_val);
+    printk(KERN_INFO "CTL_MSG: WDT Control value = 0x%lu", reg_val);
     EMGD_WRITE32(0, mmio + MSVDX_CORE_CR_BE_MSVDX_WDT_COMPAREMATCH_OFFSET);
     EMGD_WRITE32(reg_val, mmio + MSVDX_CORE_CR_BE_MSVDX_WDT_CONTROL_OFFSET);
 
