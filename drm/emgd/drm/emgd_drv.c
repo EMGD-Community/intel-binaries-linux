@@ -322,7 +322,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 		DRM_MASTER|DRM_UNLOCKED),
 	EMGD_IOCTL_DEF_DRV(IGD_ALTER_OVL, emgd_alter_ovl, DRM_MASTER|DRM_UNLOCKED),
 #endif
-	/* Making DRM_IOCTL_IGD_ALTER_OVL2 DRM_AUTH so that libva wayland can 
+	/* Making DRM_IOCTL_IGD_ALTER_OVL2 DRM_AUTH so that libva wayland can
 	 * call alter_ovl without going through X server.
 	 */
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
@@ -409,7 +409,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_3, PVRDRM_Dummy_ioctl, DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_4, PVRDRMIsMaster, DRM_MASTER|DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_5, PVRDRMUnprivCmd, DRM_UNLOCKED),
-	
+
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_PAN_DISPLAY, emgd_pan_display,
 		DRM_MASTER|DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_POWER_DISPLAY, emgd_power_display,

@@ -51,7 +51,7 @@
 
 static void emgd_crtc_dpms(struct drm_crtc *crtc, int mode);
 static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
 				 struct drm_display_mode *mode,
 #else
 				 const struct drm_display_mode *mode,
@@ -83,7 +83,7 @@ static void emgd_crtc_destroy(struct drm_crtc *crtc);
 static void emgd_crtc_load_lut(struct drm_crtc *crtc);
 static int emgd_crtc_page_flip(struct drm_crtc *crtc,
 			       struct drm_framebuffer *fb,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 			       struct drm_pending_vblank_event *event);
 #else
 			       struct drm_pending_vblank_event *event,
@@ -225,7 +225,7 @@ static void emgd_crtc_dpms(struct drm_crtc *crtc, int mode)
 
 
 static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
 				 struct drm_display_mode *mode,
 #else
 				 const struct drm_display_mode *mode,
@@ -718,9 +718,9 @@ int crtc_pageflip_handler(struct drm_device *dev, int port_num)
 	context = devpriv->context;
 
 	/* Look up which CRTC that this flip is for. */
-	/* If the DC=1, only one of the CRTCs would have a non-NULL owner (display context), 
- 	 * so we determine the CRTC by looking at the owner field. If the DC is not 1  
- 	 * (which means both the CRTCs have valid owner fields), we look at the port number to 
+	/* If the DC=1, only one of the CRTCs would have a non-NULL owner (display context),
+ 	 * so we determine the CRTC by looking at the owner field. If the DC is not 1
+ 	 * (which means both the CRTCs have valid owner fields), we look at the port number to
  	 * determine the right CRTC.
 	 */
 	if (devpriv->crtcs[0]->igd_pipe->owner && devpriv->crtcs[1]->igd_pipe->owner) {
@@ -728,7 +728,7 @@ int crtc_pageflip_handler(struct drm_device *dev, int port_num)
 			crtcnum = 0;
 		} else {
 			crtcnum = 1;
-		}		
+		}
 	} else {
 		if (devpriv->crtcs[0]->igd_pipe->owner) {
 			crtcnum = 0;
@@ -967,7 +967,7 @@ void emgd_flip_worker(struct work_struct *w)
  */
 static int emgd_crtc_page_flip(struct drm_crtc *crtc,
 			       struct drm_framebuffer *fb,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
 			       struct drm_pending_vblank_event *event)
 #else
 			       struct drm_pending_vblank_event *event,
