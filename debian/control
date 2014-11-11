@@ -27,8 +27,7 @@ Depends:
  emgd-drm-dkms (> ${binary:Version}),
  emgd-utils    (> ${binary:Version}),
  xserver-xorg-1.9-video-emgd,
-Recommends:
- xserver-xorg-1.9,
+ 
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-driver-dev
@@ -106,7 +105,12 @@ Architecture: all
 Depends:
  xserver-xorg-1.9-video-emgd-meego1.2 (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-meego-wayland (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-tizen1.0 (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-fedora14 (= ${binary:Version})
 Recommends:
+ xserver-xorg-1.9,
  xserver-xorg-1.9-video-emgd-meego1.2,
+# libegl1-mesa-7.9-drivers includes libegl1-mesa-7.9
+ libegl1-mesa-7.9-drivers,
+ libgl1-mesa-7.9-dri,
+ libgl1-mesa-7.9-glx,
 Description: Intel emgd xserver driver.
 
 Package: xserver-xorg-1.9-video-emgd-fedora14
