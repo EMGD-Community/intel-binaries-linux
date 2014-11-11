@@ -27,7 +27,6 @@ Depends:
  emgd-drm-dkms (> ${binary:Version}),
  emgd-utils    (> ${binary:Version}),
  xserver-xorg-1.9-video-emgd,
- 
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-driver-dev
