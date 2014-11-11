@@ -41,7 +41,13 @@ Architecture: all
 Depends: ${misc:Depends},
  dkms, make,
  libdrm-dev, linux-libc-dev
-Description: Intel emgd driver in DKMS format.
+Description: Intel EMGD driver in DKMS format.
+
+Package: emgd-backlight-dkms
+Architecture: all
+Depends:
+ dkms, make
+Description: Intel EMGD backlight driver in DKMS format.
 
 Package: emgd-utils
 Architecture: all

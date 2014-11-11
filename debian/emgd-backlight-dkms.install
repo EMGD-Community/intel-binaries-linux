@@ -1,0 +1,2 @@
+backlight/*				/usr/src/emgdbl-1.16
+config/dkms/emgdbl.conf	        /usr/src/emgdbl-1.16/dkms.conf
