@@ -38,6 +38,8 @@ link:
 	cd rpm_contents/usr/lib/ && ln -s libemgdsrv_um.so.1.5.15.3226         libemgdsrv_um.so.1
 	#cd rpm_contents/usr/lib/ && ln -s libGLES_CM.so.1.5.15.3226            libGLES_CM.so
 	cd rpm_contents/usr/lib/ && ln -s libGLES_CM.so.1.5.15.3226            libGLES_CM.so.1
+	cd rpm_contents/usr/lib/ && ln -s libGLES_CM.so.1.5.15.3226            libGLESv1_CM.so.1.5.15.3226
+	cd rpm_contents/usr/lib/ && ln -s libGLESv1_CM.so.1.5.15.3226	       libGLESv1_CM.so.1
 	#cd rpm_contents/usr/lib/ && ln -s libGLESv2.so.1.5.15.3226             libGLESv2.so
 	cd rpm_contents/usr/lib/ && ln -s libGLESv2.so.1.5.15.3226             libGLESv2.so.1
 	#cd rpm_contents/usr/lib/ && ln -s libOpenVG.so.1.5.15.3226              libOpenVG.so
