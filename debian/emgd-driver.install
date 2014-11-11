@@ -1,3 +1,5 @@
+config/grub.d/emgd.cfg                              /etc/default/grub.d/
+
 config/modprobe.d/blacklist-gma500.conf  /etc/modprobe.d/
 config/modprobe.d/emgd.conf                   /etc/modprobe.d/
 config/modprobe.d/emgdbl.conf                /etc/modprobe.d/
