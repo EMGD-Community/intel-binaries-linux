@@ -677,7 +677,10 @@ static void create_connectors(struct drm_device *dev,
 #endif
 
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,17,0)
+#else
 	drm_sysfs_connector_add(&emgd_connector->base);
+#endif
 
 	EMGD_TRACE_EXIT;
 }
