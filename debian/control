@@ -25,6 +25,7 @@ Pre-Depends:
  debconf (>= 0.2.17)
 Depends:
  emgd-drm-dkms (> ${binary:Version}),
+ emgd-backlight-dkms (> ${binary:Version}),
  emgd-utils    (> ${binary:Version}),
  xserver-xorg-1.9-video-emgd,
 Description: Intel emgd driver in DKMS format.
