@@ -47,6 +47,10 @@ Package: emgd-backlight-dkms
 Architecture: all
 Depends:
  dkms, make
+Provides:
+ emgdbl,
+Breaks:
+ emgdbl,
 Description: Intel EMGD backlight driver in DKMS format.
 
 Package: emgd-utils
