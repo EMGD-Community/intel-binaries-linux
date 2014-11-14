@@ -16,7 +16,7 @@ Build-Depends: debhelper (>= 9),
 # wayland
  libwayland-client0, libgbm1,
 # multimedia accel
- libva-1.0.15-dev | libva-emgd-dev | libva-dev , libgstreamer-plugins-base0.10-dev,
+ libva-dev , libgstreamer-plugins-base0.10-dev,
 Standards-Version: 3.8.1
 
 Package: emgd-driver
@@ -25,6 +25,7 @@ Pre-Depends:
  debconf (>= 0.2.17)
 Depends:
  emgd-drm-dkms (> ${binary:Version}),
+ emgd-backlight-dkms (> ${binary:Version}),
  emgd-utils    (> ${binary:Version}),
  xserver-xorg-1.9-video-emgd,
 Recommends:
@@ -43,7 +44,17 @@ Architecture: all
 Depends: ${misc:Depends},
  dkms, make,
  libdrm-dev, linux-libc-dev
-Description: Intel emgd driver in DKMS format.
+Description: Intel EMGD driver in DKMS format.
+
+Package: emgd-backlight-dkms
+Architecture: all
+Depends:
+ dkms, make
+Provides:
+ emgdbl,
+Breaks:
+ emgdbl,
+Description: Intel EMGD backlight driver in DKMS format.
 
 Package: emgd-utils
 Architecture: all
@@ -106,7 +117,12 @@ Architecture: all
 Depends:
  xserver-xorg-1.9-video-emgd-meego1.2 (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-meego-wayland (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-tizen1.0 (= ${binary:Version}) | xserver-xorg-1.9-video-emgd-fedora14 (= ${binary:Version})
 Recommends:
+ xserver-xorg-1.9,
  xserver-xorg-1.9-video-emgd-meego1.2,
+# libegl1-mesa-7.9-drivers includes libegl1-mesa-7.9
+ libegl1-mesa-7.9-drivers,
+ libgl1-mesa-7.9-dri,
+ libgl1-mesa-7.9-glx,
 Description: Intel emgd xserver driver.
 
 Package: xserver-xorg-1.9-video-emgd-fedora14
@@ -135,7 +151,14 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  xserver-xorg-core | xserver-xorg-1.9-core,
  xorg-video-abi-8,
 Provides:
- libegl1-mesa, libegl1-mesa-7.9,
+ libegl1,
+ libegl1-mesa,
+ libgles1,
+ libgles1-mesa,
+ libgles2,
+ libgles2-mesa,
+ libopenvg1,
+ libopenvg1-mesa,
 Conflicts:
  xserver-xorg-core (<< 1.9), xserver-xorg-core (>= 1.10),
 Breaks:

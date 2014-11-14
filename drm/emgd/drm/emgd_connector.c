@@ -378,7 +378,11 @@ static void emgd_connector_destroy(struct drm_connector *connector)
 
 	emgd_connector = container_of(connector, emgd_connector_t, base);
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,17,0)
+	drm_connector_unregister(connector);
+#else
 	drm_sysfs_connector_remove(connector);
+#endif
 	drm_connector_cleanup(connector);
 
 	/* Remove the properties */

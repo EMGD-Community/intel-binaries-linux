@@ -1,4 +1,7 @@
-config/blacklist-gma500.conf  /etc/modprobe.d/
-config/emgd.conf              /etc/modprobe.d/
+config/grub.d/emgd.cfg                              /etc/default/grub.d/
 
-config/xorg.conf              /usr/share/emgd-driver/
+config/modprobe.d/blacklist-gma500.conf  /etc/modprobe.d/
+config/modprobe.d/emgd.conf                   /etc/modprobe.d/
+config/modprobe.d/emgdbl.conf                /etc/modprobe.d/
+
+config/xorg.conf                                        /usr/share/emgd-driver/
