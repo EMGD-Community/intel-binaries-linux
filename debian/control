@@ -28,6 +28,12 @@ Depends:
  emgd-backlight-dkms (> ${binary:Version}),
  emgd-utils    (> ${binary:Version}),
  xserver-xorg-1.9-video-emgd,
+Recommends:
+ xserver-xorg-1.9,
+# libegl1-mesa-7.9-drivers includes libegl1-mesa-7.9
+ libegl1-mesa-7.9-drivers,
+ libgl1-mesa-7.9-dri,
+ libgl1-mesa-7.9-glx,
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-driver-dev
