@@ -53,10 +53,10 @@ extern int calculate_eld(igd_display_port_t *port,
 static void emgd_encoder_destroy(struct drm_encoder *encoder);
 static void emgd_encoder_dpms(struct drm_encoder *encoder, int mode);
 static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
-				struct drm_display_mode *mode,
-#else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
 				const struct drm_display_mode *mode,
+#else
+				struct drm_display_mode *mode,
 #endif
 				struct drm_display_mode *adjusted_mode);
 static void emgd_encoder_prepare(struct drm_encoder *encoder);
@@ -159,10 +159,10 @@ static void emgd_encoder_dpms(struct drm_encoder *encoder, int mode)
  * @return true, false (details TBD)
  */
 static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
-		struct drm_display_mode *mode,
-#else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
 		const struct drm_display_mode *mode,
+#else
+		struct drm_display_mode *mode,
 #endif
 		struct drm_display_mode *adjusted_mode)
 {

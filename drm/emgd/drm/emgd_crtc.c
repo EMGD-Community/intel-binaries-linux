@@ -51,12 +51,12 @@
 
 static void emgd_crtc_dpms(struct drm_crtc *crtc, int mode);
 static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
-				 struct drm_display_mode *mode,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
+				const struct drm_display_mode *mode,
 #else
-				 const struct drm_display_mode *mode,
+				struct drm_display_mode *mode,
 #endif
-				 struct drm_display_mode *adjusted_mode);
+				struct drm_display_mode *adjusted_mode);
 static int emgd_crtc_mode_set(struct drm_crtc *crtc,
 			      struct drm_display_mode *mode,
 			      struct drm_display_mode *adjusted_mode,
@@ -83,11 +83,11 @@ static void emgd_crtc_destroy(struct drm_crtc *crtc);
 static void emgd_crtc_load_lut(struct drm_crtc *crtc);
 static int emgd_crtc_page_flip(struct drm_crtc *crtc,
 			       struct drm_framebuffer *fb,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
-			       struct drm_pending_vblank_event *event);
-#else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
 			       struct drm_pending_vblank_event *event,
 			       uint32_t page_flip_flags);
+#else
+			       struct drm_pending_vblank_event *event);
 #endif
 static int emgd_crtc_set_config(struct drm_mode_set *set);
 
@@ -225,10 +225,10 @@ static void emgd_crtc_dpms(struct drm_crtc *crtc, int mode)
 
 
 static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
-				 struct drm_display_mode *mode,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
+				const struct drm_display_mode *mode,
 #else
-				 const struct drm_display_mode *mode,
+				struct drm_display_mode *mode,
 #endif
 				 struct drm_display_mode *adjusted_mode)
 {
@@ -300,7 +300,8 @@ static int emgd_crtc_mode_set(struct drm_crtc *crtc,
 	timing->width = adjusted_mode->crtc_hdisplay;
 	timing->height = adjusted_mode->crtc_vdisplay;
 	timing->refresh = adjusted_mode->vrefresh;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
+#else
 	timing->dclk = adjusted_mode->synth_clock; /* Is this the right variable? */
 #endif
 	timing->htotal = adjusted_mode->crtc_htotal;
@@ -313,7 +314,8 @@ static int emgd_crtc_mode_set(struct drm_crtc *crtc,
 	timing->vblank_end = adjusted_mode->crtc_vblank_end;
 	timing->vsync_start = adjusted_mode->crtc_vsync_start;
 	timing->vsync_end = adjusted_mode->crtc_vsync_end;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
+#else
 	timing->mode_number = adjusted_mode->clock_index;
 #endif
 	timing->mode_info_flags = adjusted_mode->private_flags;
@@ -366,10 +368,10 @@ static int emgd_crtc_mode_set_base(struct drm_crtc *crtc, int x, int y,
 	emgd_crtc = container_of(crtc, emgd_crtc_t, base);
 	/* According to LKML something changed here - https://lkml.org/lkml/2014/4/2/622 */
         /* Might be a fix for the EMGD driver */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
-	fb        = crtc->fb;
-#else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,15,0)
 	fb        = crtc->primary->fb;
+#else
+	fb        = crtc->fb;
 #endif
 	emgd_fb   = container_of(fb, emgd_framebuffer_t, base);
 	display   = emgd_crtc->igd_pipe->owner;
@@ -603,7 +605,8 @@ static void emgd_crtc_gamma_set(struct drm_crtc *crtc,
 		uint32_t size)
 {
 	int end, i;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,37)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,37)
+#else
 	int start = 0;
 #endif
 	emgd_crtc_t *emgd_crtc = NULL;
@@ -967,11 +970,11 @@ void emgd_flip_worker(struct work_struct *w)
  */
 static int emgd_crtc_page_flip(struct drm_crtc *crtc,
 			       struct drm_framebuffer *fb,
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
-			       struct drm_pending_vblank_event *event)
-#else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
 			       struct drm_pending_vblank_event *event,
-			       uint32_t page_flip_flags)
+			       	   	   uint32_t page_flip_flags)
+#else
+			       struct drm_pending_vblank_event *event)
 #endif
 {
 	emgd_crtc_t        *emgd_crtc;
@@ -1059,10 +1062,10 @@ static int emgd_crtc_page_flip(struct drm_crtc *crtc,
 
 	/* According to LKML something changed here - https://lkml.org/lkml/2014/4/2/622 */
 	/* Might be a fix for the EMGD driver */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
-	crtc->fb = fb;
-#else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,15,0)
 	crtc->primary->fb = fb;
+#else
+	crtc->fb = fb;
 #endif
 
 	/* Done updating CRTC structure */

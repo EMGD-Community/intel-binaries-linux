@@ -144,10 +144,10 @@ static void invalidate_vma(unsigned long pg_offset, unsigned long bus_addr) {
 			} else {
 				atomic_add_negative(-1, &pte_page(*pte)->_mapcount);
 				put_page(pte_page(*pte));
-#if  (LINUX_VERSION_CODE < KERNEL_VERSION(2,6,34))
-				dec_mm_counter(entry->vma->vm_mm, file_rss);
-#else
+#if  (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,34))
 				dec_mm_counter(entry->vma->vm_mm, MM_FILEPAGES);
+#else
+				dec_mm_counter(entry->vma->vm_mm, file_rss);
 #endif
 			}
 
