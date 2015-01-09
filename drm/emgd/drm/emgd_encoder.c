@@ -216,12 +216,12 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 
 	/* According to LKML something changed here - https://lkml.org/lkml/2014/4/2/622 */
 	/* Might be a fix for the EMGD driver */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
-	fb_info->width  = encoder->crtc->fb->width;
-	fb_info->height = encoder->crtc->fb->height;
-#else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,15,0)
 	fb_info->width  = encoder->crtc->primary->fb->width;
 	fb_info->height = encoder->crtc->primary->fb->height;
+#else
+	fb_info->width  = encoder->crtc->fb->width;
+	fb_info->height = encoder->crtc->fb->height;
 #endif
 
 	EMGD_DEBUG("Setting fb_info to: %dx%d", fb_info->width, fb_info->height);
@@ -229,7 +229,8 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 	pt_info->width        = mode->crtc_hdisplay;
 	pt_info->height       = mode->crtc_vdisplay;
 	pt_info->refresh      = mode->vrefresh;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
+#else
 	pt_info->dclk         = mode->synth_clock;
 #endif
 	pt_info->htotal       = mode->crtc_htotal;
@@ -242,7 +243,8 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 	pt_info->vblank_end   = mode->crtc_vblank_end;
 	pt_info->vsync_start  = mode->crtc_vsync_start;
 	pt_info->vsync_end    = mode->crtc_vsync_end;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
+#else
 	pt_info->mode_number  = mode->clock_index;
 #endif
 	pt_info->flags        = 0;
@@ -255,7 +257,8 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 		adjusted_mode->crtc_hdisplay     = timing->width;
 		adjusted_mode->crtc_vdisplay     = timing->height;
 		adjusted_mode->vrefresh          = timing->refresh;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
+#else
 		adjusted_mode->synth_clock       = timing->dclk;
 #endif
 		adjusted_mode->crtc_htotal       = timing->htotal;
@@ -268,7 +271,8 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 		adjusted_mode->crtc_vblank_end   = timing->vblank_end;
 		adjusted_mode->crtc_vsync_start  = timing->vsync_start;
 		adjusted_mode->crtc_vsync_end    = timing->vsync_end;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
+#else
 		adjusted_mode->clock_index       = timing->mode_number;
 #endif
 		adjusted_mode->private_flags     = timing->mode_info_flags;
@@ -445,7 +449,8 @@ static void emgd_encoder_mode_set(struct drm_encoder *encoder,
 			port->pt_info->width        = adjusted_mode->crtc_hdisplay;
 			port->pt_info->height       = adjusted_mode->crtc_vdisplay;
 			port->pt_info->refresh      = adjusted_mode->vrefresh;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
+#else
 			port->pt_info->dclk         = adjusted_mode->synth_clock;
 #endif
 			port->pt_info->htotal       = adjusted_mode->crtc_htotal;
@@ -458,7 +463,8 @@ static void emgd_encoder_mode_set(struct drm_encoder *encoder,
 			port->pt_info->vblank_end   = adjusted_mode->crtc_vblank_end;
 			port->pt_info->vsync_start  = adjusted_mode->crtc_vsync_start;
 			port->pt_info->vsync_end    = adjusted_mode->crtc_vsync_end;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,13,0)
+#else
 			port->pt_info->mode_number  = adjusted_mode->clock_index;
 #endif
 			port->pt_info->flags        = adjusted_mode->private_flags;
