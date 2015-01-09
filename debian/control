@@ -24,9 +24,9 @@ Architecture: all
 Pre-Depends:
  debconf (>= 0.2.17)
 Depends:
- emgd-drm-dkms (> ${binary:Version}),
- emgd-backlight-dkms (> ${binary:Version}),
- emgd-utils    (> ${binary:Version}),
+ emgd-drm-dkms (>= ${binary:Version}),
+ emgd-backlight-dkms (>= ${binary:Version}),
+ emgd-utils    (>= ${binary:Version}),
  xserver-xorg-1.9-video-emgd,
 Recommends:
  plymouth-disabler,
@@ -40,8 +40,8 @@ Description: Intel emgd driver in DKMS format.
 Package: emgd-driver-dev
 Architecture: all
 Depends:
- emgd-driver   (> ${binary:Version}),
- emgd-headers  (> ${binary:Version}),
+ emgd-driver   (>= ${binary:Version}),
+ emgd-headers  (>= ${binary:Version}),
 Description: Intel emgd driver in DKMS format.
 
 Package: emgd-drm-dkms
@@ -64,7 +64,7 @@ Description: Intel EMGD backlight driver in DKMS format.
 Package: emgd-utils
 Architecture: all
 Depends:
- emgd-utils-gui      (> ${binary:Version}),
+ emgd-utils-gui      (>= ${binary:Version}),
  emgd-utils-ced-lite (= ${binary:Version})
 Description: Intel emgd driver in DKMS format.
 
