@@ -31,7 +31,7 @@ Depends:
 Recommends:
  plymouth-disabler,
  xserver-xorg-1.9,
- libegl1-mesa-7.9
+ libegl1-mesa-7.9,
  libegl1-mesa-7.9-drivers,
  libgl1-mesa-7.9-dri,
  libgl1-mesa-7.9-glx,
