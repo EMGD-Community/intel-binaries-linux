@@ -266,7 +266,7 @@ static struct pci_device_id pciidlist[] = {
 	    emgd_PCI_IDS
 };
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
 
 /*
  * To use DRM_IOCTL_DEF, the first arg should be the local (zero based)
@@ -305,7 +305,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	 * DRM_UNLOCKED private EMGD ioctl's can run/work in serial mode only,
 	 * one by one.
 	 */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_CURSOR, emgd_alter_cursor,
 		DRM_MASTER|DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_CURSOR_POS, emgd_alter_cursor_pos,
@@ -325,7 +325,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	/* Making DRM_IOCTL_IGD_ALTER_OVL2 DRM_AUTH so that libva wayland can 
 	 * call alter_ovl without going through X server.
 	 */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_OVL2, emgd_alter_ovl2, DRM_AUTH|DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_APPCTX_ALLOC, emgd_appcontext_alloc,
 		DRM_MASTER|DRM_UNLOCKED),
@@ -349,7 +349,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	/* Making DRM_IOCTL_IGD_GET_DISPLAY DRM_AUTH so that libva wayland can
 	 * obtain the display handle without going through x server.
 	 */ 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_DISPLAY, emgd_get_display, DRM_AUTH|DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_DRM_CONFIG, emgd_get_drm_config,
 		DRM_MASTER|DRM_UNLOCKED),
@@ -403,7 +403,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	 * kernel services.
 	 *   function prototypes in services4/srvkm/env/linux/pvr_drm.h
 	 */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_1, PVRSRV_BridgeDispatchKM, DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_2, PVRDRM_Dummy_ioctl, DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_3, PVRDRM_Dummy_ioctl, DRM_UNLOCKED),
@@ -461,7 +461,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	/*
 	 * For PDUMP
 	 */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
 #if defined(PDUMP)
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_6, dbgdrv_ioctl, 0),
 #else
@@ -522,7 +522,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	/*
 	 * For VIDEO (MSVDX/TOPAZ
 	 */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_VIDEO_CMD_BUF, emgd_video_cmd_buf,
 			DRM_UNLOCKED),
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_INIT_VIDEO, emgd_init_video,
