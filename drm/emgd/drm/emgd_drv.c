@@ -273,8 +273,8 @@ static struct pci_device_id pciidlist[] = {
  * IOCTL number, not the global number.
  */
 #define EMGD_IOCTL_DEF(ioctl, _func, _flags) \
- [DRM_IOCTL_NR(ioctl) - DRM_COMMAND_BASE] = \
- {.cmd = ioctl, .func = _func, .flags = _flags}
+	[DRM_IOCTL_NR(ioctl) - DRM_COMMAND_BASE] = \
+		{.cmd = ioctl, .func = _func, .flags = _flags}
 
 #else
 
@@ -284,7 +284,7 @@ static struct pci_device_id pciidlist[] = {
  */
 #define EMGD_IOCTL_DEF_DRV(ioctl, _func, _flags) \
 	[DRM_IOCTL_NR(DRM_IOCTL_##ioctl) - DRM_COMMAND_BASE] = \
-	{.cmd = DRM_##ioctl, .func = _func, .flags = _flags, .cmd_drv = DRM_IOCTL_##ioctl, .name = #ioctl}
+		{.cmd = DRM_##ioctl, .func = _func, .flags = _flags, .cmd_drv = DRM_IOCTL_##ioctl, .name = #ioctl}
 
 #endif
 
@@ -308,11 +308,11 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
 	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_CURSOR, emgd_alter_cursor,
 		DRM_MASTER|DRM_UNLOCKED),
-    EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_CURSOR_POS, emgd_alter_cursor_pos,
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_CURSOR_POS, emgd_alter_cursor_pos,
 		DRM_MASTER|DRM_UNLOCKED),
-    EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_DISPLAYS, emgd_alter_displays,
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_DISPLAYS, emgd_alter_displays,
 		DRM_MASTER|DRM_UNLOCKED),
-    EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_OVL, emgd_alter_ovl, DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_ALTER_OVL, emgd_alter_ovl, DRM_MASTER|DRM_UNLOCKED),
 #else
 	EMGD_IOCTL_DEF_DRV(IGD_ALTER_CURSOR, emgd_alter_cursor,
 		DRM_MASTER|DRM_UNLOCKED),
@@ -322,7 +322,7 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 		DRM_MASTER|DRM_UNLOCKED),
 	EMGD_IOCTL_DEF_DRV(IGD_ALTER_OVL, emgd_alter_ovl, DRM_MASTER|DRM_UNLOCKED),
 #endif
-	/* Making DRM_IOCTL_IGD_ALTER_OVL2 DRM_AUTH so that libva wayland can
+	/* Making DRM_IOCTL_IGD_ALTER_OVL2 DRM_AUTH so that libva wayland can 
 	 * call alter_ovl without going through X server.
 	 */
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
@@ -463,32 +463,32 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	 */
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
 #if defined(PDUMP)
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_6, dbgdrv_ioctl, 0),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_6, dbgdrv_ioctl, 0),
 #else
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_6, NULL, 0),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_RESERVED_6, NULL, 0),
 #endif
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_SET_ATTRS, emgd_set_attrs, DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_SET_PALETTE_ENTRY, emgd_set_palette_entry,
-                DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_SET_SURFACE, emgd_set_surface, DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_SYNC, emgd_sync, DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_DRIVER_PRE_INIT, emgd_driver_pre_init,
-                DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_DRIVER_GET_PORTS, emgd_driver_get_ports,
-                DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_OVL_INIT_PARAMS, emgd_get_ovl_init_params,
-                DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_PAGE_LIST, emgd_get_page_list,
-                DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_START_PVRSRV, emgd_start_pvrsrv,
-                DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_TEST_PVRSRV, emgd_test_pvrsrv,
-                DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_CHIPSET_INFO, emgd_get_chipset_info,
-                DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_DIHCLONE_SET_SURFACE, emgd_dihclone_set_surface, DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_PREINIT_MMU, emgd_preinit_mmu, DRM_MASTER|DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_UNLOCK_PLANES, emgd_unlock_planes, DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_SET_ATTRS, emgd_set_attrs, DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_SET_PALETTE_ENTRY, emgd_set_palette_entry,
+		DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_SET_SURFACE, emgd_set_surface, DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_SYNC, emgd_sync, DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_DRIVER_PRE_INIT, emgd_driver_pre_init,
+		DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_DRIVER_GET_PORTS, emgd_driver_get_ports,
+		DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_OVL_INIT_PARAMS, emgd_get_ovl_init_params,
+		DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_PAGE_LIST, emgd_get_page_list,
+		DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_START_PVRSRV, emgd_start_pvrsrv,
+		DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_TEST_PVRSRV, emgd_test_pvrsrv,
+		DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_CHIPSET_INFO, emgd_get_chipset_info,
+		DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_DIHCLONE_SET_SURFACE, emgd_dihclone_set_surface, DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_PREINIT_MMU, emgd_preinit_mmu, DRM_MASTER|DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_UNLOCK_PLANES, emgd_unlock_planes, DRM_MASTER|DRM_UNLOCKED),
 #else
 #if defined(PDUMP)
 	EMGD_IOCTL_DEF_DRV(IGD_RESERVED_6, dbgdrv_ioctl, 0),
@@ -518,36 +518,37 @@ static struct drm_ioctl_desc emgd_ioctl[] = {
 	EMGD_IOCTL_DEF_DRV(IGD_PREINIT_MMU, emgd_preinit_mmu, DRM_MASTER|DRM_UNLOCKED),
 	EMGD_IOCTL_DEF_DRV(IGD_UNLOCK_PLANES, emgd_unlock_planes, DRM_MASTER|DRM_UNLOCKED),
 #endif
+
 	/*
 	 * For VIDEO (MSVDX/TOPAZ
 	 */
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,3,0)
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_VIDEO_CMD_BUF, emgd_video_cmd_buf,
-                         DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_INIT_VIDEO, emgd_init_video,
-                         DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_DEVICE_INFO, emgd_get_device_info,
-                         DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_VIDEO_GET_INFO, emgd_video_get_info,
-                         DRM_UNLOCKED),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_VIDEO_FLUSH_TLB, emgd_video_flush_tlb,
-                         DRM_UNLOCKED),
-  
-        /* For Buffer Class of Texture Stream */
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_INIT, emgd_bc_ts_cmd_init,
-                        DRM_AUTH),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_UNINIT, emgd_bc_ts_cmd_uninit,
-                        DRM_AUTH),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_REQUEST_BUFFERS, emgd_bc_ts_cmd_request_buffers,
-                        DRM_AUTH),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_RELEASE_BUFFERS, emgd_bc_ts_cmd_release_buffers,
-                        DRM_AUTH),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_SET_BUFFER_INFO, emgd_bc_ts_set_buffer_info,
-                        DRM_AUTH),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_GET_BUFFERS_COUNT, emgd_bc_ts_get_buffers_count,
-                        DRM_AUTH),
-        EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_GET_BUFFER_INDEX, emgd_bc_ts_get_buffer_index,
-                        DRM_AUTH),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_VIDEO_CMD_BUF, emgd_video_cmd_buf,
+			DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_INIT_VIDEO, emgd_init_video,
+			DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_GET_DEVICE_INFO, emgd_get_device_info,
+			DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_VIDEO_GET_INFO, emgd_video_get_info,
+			DRM_UNLOCKED),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_VIDEO_FLUSH_TLB, emgd_video_flush_tlb,
+			DRM_UNLOCKED),
+
+	/* For Buffer Class of Texture Stream */
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_INIT, emgd_bc_ts_cmd_init,
+		DRM_AUTH),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_UNINIT, emgd_bc_ts_cmd_uninit,
+		DRM_AUTH),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_REQUEST_BUFFERS, emgd_bc_ts_cmd_request_buffers,
+		DRM_AUTH),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_RELEASE_BUFFERS, emgd_bc_ts_cmd_release_buffers,
+		DRM_AUTH),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_SET_BUFFER_INFO, emgd_bc_ts_set_buffer_info,
+		DRM_AUTH),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_GET_BUFFERS_COUNT, emgd_bc_ts_get_buffers_count,
+		DRM_AUTH),
+	EMGD_IOCTL_DEF(DRM_IOCTL_IGD_BC_TS_GET_BUFFER_INDEX, emgd_bc_ts_get_buffer_index,
+		DRM_AUTH),
 #else
 	EMGD_IOCTL_DEF_DRV(IGD_VIDEO_CMD_BUF, emgd_video_cmd_buf,
 			DRM_UNLOCKED),
@@ -2524,6 +2525,7 @@ irqreturn_t emgd_driver_irq_handler(int irq, void *arg)
 	return IRQ_NONE;
 } /* emgd_driver_irq_handler() */
 
+
 //TODO: TEST WITHOUT #if CLAUSE
 #if LINUX_VERSION_CODE > KERNEL_VERSION(3,3,0)
 static int           emgd_pci_probe(struct pci_dev *pdev,
@@ -2624,6 +2626,7 @@ static struct pci_driver emgd_pci_driver = EMGD_PCI_DRIVER;
 #else
 #define IOCTL ioctl
 #endif
+
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,12,0))
 #define EMGD_FOPS { \
     .owner   = THIS_MODULE,        \
