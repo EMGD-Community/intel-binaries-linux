@@ -33,6 +33,7 @@
  */
 #include "user_config.h"
 
+#if 0
 #warning ****
 #warning **** This driver has NOT been configured for your system.  You are
 #warning **** building with a sample user_config.c configuration that may or
@@ -40,7 +41,7 @@
 #warning **** generate an appropriate configuration or see the User Guide
 #warning **** for more information about driver configuration.
 #warning ****
-
+#endif
 
 /*
  * One array of igd_display_info_t structures should exist for each port that
