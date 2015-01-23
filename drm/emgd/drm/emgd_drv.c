@@ -2679,7 +2679,7 @@ static struct drm_driver driver = {
 	.get_reg_ofs        = drm_core_get_reg_ofs,
 #endif
 	.ioctls             = emgd_ioctl,
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0))
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0))
     .fops                = &emgd_driver_fops,
 #else
     .fops                = EMGD_FOPS,
