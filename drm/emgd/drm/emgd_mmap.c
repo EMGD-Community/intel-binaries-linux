@@ -39,6 +39,14 @@
 #include <memlist.h>
 #include <io.h>
 
+/* 
+ VM_RESERVED has disappeared starting from Linux 3.7 and has been
+ replaced by VM_DONTDUMP since then.
+*/
+#ifndef VM_DONTDUMP
+#define VM_DONTDUMP VM_RESERVED
+#endif
+
 /*
  * Bottom 256MB reserved for display
  */
