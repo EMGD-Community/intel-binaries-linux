@@ -52,6 +52,7 @@ extern int calculate_eld(igd_display_port_t *port,
 
 static void emgd_encoder_destroy(struct drm_encoder *encoder);
 static void emgd_encoder_dpms(struct drm_encoder *encoder, int mode);
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0) //TODO
 static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
 				const struct drm_display_mode *mode,
@@ -59,6 +60,7 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 				struct drm_display_mode *mode,
 #endif
 				struct drm_display_mode *adjusted_mode);
+#endif
 static void emgd_encoder_prepare(struct drm_encoder *encoder);
 static void emgd_encoder_mode_set(struct drm_encoder *encoder,
 				struct drm_display_mode *mode,
@@ -72,7 +74,9 @@ const struct drm_encoder_funcs emgd_encoder_funcs = {
 
 const struct drm_encoder_helper_funcs emgd_encoder_helper_funcs = {
 	.dpms       = emgd_encoder_dpms,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
 	.mode_fixup = emgd_encoder_mode_fixup,
+#endif
 	.prepare    = emgd_encoder_prepare,
 	.mode_set   = emgd_encoder_mode_set,
 	.commit     = emgd_encoder_commit,
@@ -158,6 +162,7 @@ static void emgd_encoder_dpms(struct drm_encoder *encoder, int mode)
  *
  * @return true, false (details TBD)
  */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0) //TODO
 static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
 		const struct drm_display_mode *mode,
@@ -315,7 +320,7 @@ static bool emgd_encoder_mode_fixup(struct drm_encoder *encoder,
 	EMGD_TRACE_EXIT;
 	return (!ret);
 }
-
+#endif
 
 
 /**
