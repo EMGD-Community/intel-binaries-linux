@@ -50,6 +50,7 @@
 #define MAX_CURSOR_SIZE (64*64*4)
 
 static void emgd_crtc_dpms(struct drm_crtc *crtc, int mode);
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0)
 static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
 				const struct drm_display_mode *mode,
@@ -57,6 +58,7 @@ static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
 				struct drm_display_mode *mode,
 #endif
 				struct drm_display_mode *adjusted_mode);
+#endif
 static int emgd_crtc_mode_set(struct drm_crtc *crtc,
 			      struct drm_display_mode *mode,
 			      struct drm_display_mode *adjusted_mode,
@@ -95,7 +97,9 @@ static int emgd_crtc_set_config(struct drm_mode_set *set);
 
 const struct drm_crtc_helper_funcs emgd_crtc_helper_funcs = {
 	.dpms          = emgd_crtc_dpms,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0)
 	.mode_fixup    = emgd_crtc_mode_fixup,
+#endif
 	.mode_set      = emgd_crtc_mode_set,
 	.mode_set_base = emgd_crtc_mode_set_base,
 	.prepare       = emgd_crtc_prepare,
@@ -223,7 +227,7 @@ static void emgd_crtc_dpms(struct drm_crtc *crtc, int mode)
 }
 
 
-
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0)
 static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
 				const struct drm_display_mode *mode,
@@ -242,7 +246,7 @@ static bool emgd_crtc_mode_fixup(struct drm_crtc *crtc,
 	EMGD_TRACE_EXIT;
 	return 1;
 }
-
+#endif
 
 
 /**
