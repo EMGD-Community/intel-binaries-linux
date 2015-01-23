@@ -546,7 +546,7 @@ static void create_connector_properties(struct drm_device *dev,
 				EMGD_ERROR("Unsupported PD Attribute type");
 				continue;
 		}
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,5,0)
 		drm_object_attach_property(&drm_connector->base, new_prop, current_value);
 #else
         drm_connector_attach_property(drm_connector, new_prop, current_value);
