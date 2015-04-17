@@ -31,6 +31,8 @@
 
 #define MODULE_NAME hal.gmm
 
+#include <linux/version.h>
+
 #include <igd_debug.h>
 #include <drmP.h>
 #include <memlist.h>
@@ -458,7 +460,11 @@ static void *gmm_map(unsigned long offset)
 		page_map[i] = chunk->gtt_mem->pages[i];
 	}
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,19,0)
+	addr = vmap(page_map, num_pages, VM_MAP, cachemode2pgprot(_PAGE_CACHE_MODE_UC_MINUS));
+#else
 	addr = vmap(page_map, num_pages, VM_MAP, PAGE_KERNEL_UC_MINUS);
+#endif
 
 	vfree(page_map);
 	chunk->addr = addr;

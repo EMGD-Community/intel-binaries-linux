@@ -114,8 +114,13 @@ int emgd_mmap(struct file *filp, struct vm_area_struct *vma)
 #else
 	vma->vm_flags |= VM_RESERVED | VM_IO | VM_MIXEDMAP | VM_DONTEXPAND;
 #endif
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,19,0)
+	pgprot_val(vma->vm_page_prot) =
+		pgprot_val(vma->vm_page_prot) | _PAGE_CACHE_MODE_UC_MINUS;
+#else
 	pgprot_val(vma->vm_page_prot) =
 		pgprot_val(vma->vm_page_prot) | _PAGE_CACHE_UC_MINUS;
+#endif
 
 	return 0;
 }

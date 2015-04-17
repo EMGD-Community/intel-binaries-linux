@@ -50,7 +50,11 @@
 #include <drm.h>
 #endif
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,19,0)
+#include <drm_plane_helper.h>
+#else
 #include <drm_crtc.h>
+#endif
 #include <drm_crtc_helper.h>
 #include <drm_fb_helper.h>
 #include <linux/version.h>

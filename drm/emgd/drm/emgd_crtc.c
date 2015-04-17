@@ -537,7 +537,11 @@ static int emgd_crtc_cursor_set(struct drm_crtc *crtc,
 		}
 
 		/* Map the page list into kernel virtual address space */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,19,0)
+		pageaddr = vmap(pagelist, numpages, VM_MAP, __pgprot(__PAGE_KERNEL | cachemode2protval(_PAGE_CACHE_MODE_UC_MINUS)));
+#else
 		pageaddr = vmap(pagelist, numpages, VM_MAP, PAGE_KERNEL_UC_MINUS);
+#endif
 
 		/*
 		 * Our HAL only accepts 64x64 x 4byte cursors.  Only copy the first
