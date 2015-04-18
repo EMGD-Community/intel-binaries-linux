@@ -5,3 +5,5 @@ config/modprobe.d/emgd.conf                   /etc/modprobe.d/
 config/modprobe.d/emgdbl.conf                /etc/modprobe.d/
 
 config/xorg.conf                                        /usr/share/emgd-driver/
+
+config/initramfs/emgd                       /usr/share/initramfs-tools/modules.d/
