@@ -2688,6 +2688,9 @@ static struct drm_driver driver = {
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,38)
 	.pci_driver          = EMGD_PCI_DRIVER,
 #endif
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0)
+    .set_busid           = drm_pci_set_busid,
+#endif
 	.name                = DRIVER_NAME,
 	.desc                = DRIVER_DESC,
 	.date                = DRIVER_DATE,
