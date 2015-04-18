@@ -7,3 +7,5 @@ config/modprobe.d/emgdbl.conf                /etc/modprobe.d/
 config/xorg.conf                                        /usr/share/emgd-driver/
 
 config/initramfs/emgd                       /usr/share/initramfs-tools/modules.d/
+
+config/modules-load.d/emgd.conf             /etc/modules-load.d/
