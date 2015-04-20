@@ -13,6 +13,7 @@ unpak: clean
 	done
 
 link:
+	cd rpm_contents/usr/lib/ && ln -sf libEGL.so.1.5.15.3226                libEGL.so
 	cd rpm_contents/usr/lib/ && ln -s libEGL.so.1.5.15.3226                libEGL.so.1
 	cd rpm_contents/usr/lib/ && ln -s libEMGD2d.so.1.5.15.3226             libEMGD2d.so
 	cd rpm_contents/usr/lib/ && ln -s libEMGD2d.so.1.5.15.3226             libEMGD2d.so.1
@@ -36,11 +37,11 @@ link:
 	cd rpm_contents/usr/lib/ && ln -s libemgdsrv_init.so.1.5.15.3226       libemgdsrv_init.so.1
 	cd rpm_contents/usr/lib/ && ln -s libemgdsrv_um.so.1.5.15.3226         libemgdsrv_um.so
 	cd rpm_contents/usr/lib/ && ln -s libemgdsrv_um.so.1.5.15.3226         libemgdsrv_um.so.1
-	#cd rpm_contents/usr/lib/ && ln -s libGLES_CM.so.1.5.15.3226            libGLES_CM.so
+	cd rpm_contents/usr/lib/ && ln -sf libGLES_CM.so.1.5.15.3226            libGLES_CM.so
 	cd rpm_contents/usr/lib/ && ln -s libGLES_CM.so.1.5.15.3226            libGLES_CM.so.1
 	cd rpm_contents/usr/lib/ && ln -s libGLES_CM.so.1.5.15.3226            libGLESv1_CM.so.1.5.15.3226
 	cd rpm_contents/usr/lib/ && ln -s libGLESv1_CM.so.1.5.15.3226	       libGLESv1_CM.so.1
-	#cd rpm_contents/usr/lib/ && ln -s libGLESv2.so.1.5.15.3226             libGLESv2.so
+	cd rpm_contents/usr/lib/ && ln -sf libGLESv2.so.1.5.15.3226             libGLESv2.so
 	cd rpm_contents/usr/lib/ && ln -s libGLESv2.so.1.5.15.3226             libGLESv2.so.1
 	#cd rpm_contents/usr/lib/ && ln -s libOpenVG.so.1.5.15.3226              libOpenVG.so
 	cd rpm_contents/usr/lib/ && ln -s libOpenVG.so.1.5.15.3226             libOpenVG.so.1
