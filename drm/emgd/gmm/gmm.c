@@ -461,7 +461,7 @@ static void *gmm_map(unsigned long offset)
 	}
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,19,0)
-	addr = vmap(page_map, num_pages, VM_MAP, cachemode2pgprot(_PAGE_CACHE_MODE_UC_MINUS));
+	addr = vmap(page_map, num_pages, VM_MAP, __pgprot(__PAGE_KERNEL | cachemode2protval(_PAGE_CACHE_MODE_UC_MINUS)));
 #else
 	addr = vmap(page_map, num_pages, VM_MAP, PAGE_KERNEL_UC_MINUS);
 #endif
