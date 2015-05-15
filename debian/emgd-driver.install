@@ -9,3 +9,4 @@ config/xorg.conf                                        /usr/share/emgd-driver/
 config/initramfs/emgd                       /usr/share/initramfs-tools/modules.d/
 
 config/modules-load.d/emgd.conf             /etc/modules-load.d/
+config/modules-load.d/emgdbl.conf             /etc/modules-load.d/
