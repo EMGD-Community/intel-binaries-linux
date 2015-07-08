@@ -30,7 +30,6 @@
  */
 #define MODULE_NAME hal.oal
 
-
 #include <drmP.h>
 #include <drm_crtc_helper.h>
 #include <linux/version.h>
