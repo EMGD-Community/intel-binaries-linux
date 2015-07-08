@@ -282,10 +282,17 @@ static struct pci_device_id pciidlist[] = {
  * To use DRM_IOCTL_DEF_DRV, the first arg should be the local (zero
  * based) IOCTL number, not the global number.
  */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,1,0)
+#define EMGD_IOCTL_DEF_DRV(ioctl, _func, _flags) \
+	[DRM_IOCTL_NR(DRM_IOCTL_##ioctl) - DRM_COMMAND_BASE] = \
+		{.cmd = DRM_##ioctl, .func = _func, .flags = _flags, .name = #ioctl}
+
+#else
 #define EMGD_IOCTL_DEF_DRV(ioctl, _func, _flags) \
 	[DRM_IOCTL_NR(DRM_IOCTL_##ioctl) - DRM_COMMAND_BASE] = \
 		{.cmd = DRM_##ioctl, .func = _func, .flags = _flags, .cmd_drv = DRM_IOCTL_##ioctl, .name = #ioctl}
 
+#endif
 #endif
 
 static struct drm_ioctl_desc emgd_ioctl[] = {
