@@ -285,7 +285,7 @@ static struct pci_device_id pciidlist[] = {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,1,0)
 #define EMGD_IOCTL_DEF_DRV(ioctl, _func, _flags) \
 	[DRM_IOCTL_NR(DRM_IOCTL_##ioctl) - DRM_COMMAND_BASE] = \
-		{.cmd = DRM_##ioctl, .func = _func, .flags = _flags, .name = #ioctl}
+		{.cmd = DRM_IOCTL_##ioctl, .func = _func, .flags = _flags, .name = #ioctl}
 
 #else
 #define EMGD_IOCTL_DEF_DRV(ioctl, _func, _flags) \
