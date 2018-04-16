@@ -6,5 +6,5 @@
 /usr/lib/i386-linux-gnu/emgd-meego1.2/xorg/modules/drivers/emgd_drv.so		/usr/lib/xorg/modules/drivers/emgd_drv.so
 
 # GLX
-/usr/lib/i386-linux-gnu/emgd-meego1.2/dri/emgd_dri.so				/usr/lib/i386-linux-gnu/dri/emgd_dri.so.so
+/usr/lib/i386-linux-gnu/emgd-meego1.2/dri/emgd_dri.so				/usr/lib/i386-linux-gnu/dri/emgd_dri.so
 /usr/lib/i386-linux-gnu/emgd-meego1.2/dri/emgd_dri.so				/usr/lib/dri/emgd_dri.so
